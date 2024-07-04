@@ -14,9 +14,9 @@ public class PlayerMovement : BChara
     [Header("_moveCntの値を観測するだけ")]
     [SerializeField] private int _checkMoveCnt;
 
-    //仮想カメラの参照を設定します
-    [Header("CinemachineVirtualCamera")]
-    [SerializeField] private CinemachineVirtualCamera _vCam;
+    //カメラの自動取得
+    [Header("カメラの自動取得")]
+    [SerializeField] private GameObject _camera;
 
     //移動入力を保存する変数
     private Vector2 _movementInput = Vector2.zero;
@@ -29,11 +29,14 @@ public class PlayerMovement : BChara
     //ジャンプのフラグ
     private bool _jumpFlag = false;
 
+   
+
 
     void Start()
     {
         //キャラクターコントローラーを取得します
         _cCtrl = GetComponent<CharacterController>();
+        _camera = GameObject.Find("CinemaCamera");
     }
     private void FixedUpdate()
     {
@@ -155,7 +158,7 @@ public class PlayerMovement : BChara
         if (direction.magnitude >= 0.1f)
         {
             //Cinemachine仮想カメラのTransformを取得します
-            Transform _camTransform = _vCam.transform;
+            Transform _camTransform = _camera.transform;
             //カメラの前方向を取得します
             Vector3 _forward = Vector3.Scale(_camTransform.forward, new Vector3(1, 0, 1)).normalized;
             //カメラの右方向を取得します
