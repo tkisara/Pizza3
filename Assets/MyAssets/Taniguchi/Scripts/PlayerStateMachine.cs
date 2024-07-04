@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerStateMachine : MonoBehaviour
 {
@@ -13,14 +12,16 @@ public class PlayerStateMachine : MonoBehaviour
     private State _state = State.Idle;
     private State _nextState = State.Idle;
 
-    private CharacterController _characterController;
-    private Vector3 _velocity;
-    [SerializeField] private float _speed;
-
+    private Transform _target;
+    private NavMeshAgent _agent;
+    Rigidbody _rb;
     // Start is called before the first frame update
     void Start()
     {
-        _characterController = GetComponent<CharacterController>();
+        _target = GameObject.Find("Player").transform;
+        _rb = GetComponent<Rigidbody>();
+        _rb.constraints = RigidbodyConstraints.FreezeRotation;
+        _agent = GetComponent<NavMeshAgent>();
         IdleStart();
     }
 
@@ -87,7 +88,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
     private void IdleUpdate()
     {
-
+        ChangeState(State.Movement);
     }
     private void IdleEnd()
     {
@@ -101,7 +102,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
     private void MovementUpdate()
     {
-
+        _agent.SetDestination(transform.position);
     }
     private void MovementEnd()
     {
