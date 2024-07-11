@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3992621180550492338}
   - component: {fileID: 5905471421459165466}
   - component: {fileID: 5257015463775047888}
+  - component: {fileID: 2771808675267451994}
   m_Layer: 0
   m_Name: Item0_Prefab
   m_TagString: Item0
@@ -135,3 +136,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2771808675267451994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7131516761563609900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e5db94d78a98e4eaa4f96c51975031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eFfectPrefab: {fileID: 7155335147208632822, guid: afcac5fac34f8b149ae175b49ac7d244,
+    type: 3}
+  _sOund: {fileID: 8300000, guid: cd02c5d2f1d0f884c991a0967522bce2, type: 3}

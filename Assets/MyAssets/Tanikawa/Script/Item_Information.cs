@@ -2,26 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Information : MonoBehaviour
+public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
 {
     //エフェクトの発生、SEの発生、Itemの削除
-    public GameObject effectPrefab;
-    public AudioClip sound;
-
+    [SerializeField] GameObject _eFfectPrefab;
+    [SerializeField] AudioClip _sOund;
+   
     // Start is called before the first frame update
     // （ポイント）先頭に「public」をつけること。
-    public void ItemBase(GameObject target)
+    public void ItemBase(GameObject Player)
     {
-        GameObject effect = Instantiate(effectPrefab, target.transform.position, Quaternion.identity);
-        Destroy(effect, 1.0f);
-        AudioSource.PlayClipAtPoint(sound, transform.position);
+        //プレイヤーの値を継承出来たら
+        //アイテムのtagを確認する
+        switch (gameObject.tag)
+        {
+            case "Item0": //Item0の時
+                //プレイヤーの値を書き換える
+                Debug.Log("Item0"); 
+                break;  
 
-        //（ポイント）
-        // アイテムは破壊ではなく非アクティブ状態にする。
-        // パワーアップアイテムとの関係から。
-        this.gameObject.SetActive(false);
+            case "Item1":
+                //プレイヤーの値を書き換える
+                Debug.Log("Item1"); 
+                break; 
 
-        // ミサイルを破壊する。
-        Destroy(target.gameObject);
+            case "Item2":
+                //プレイヤーの値を書き換える
+                Debug.Log("Item2"); 
+                break; 
+
+            default:    
+                break; //switch文から抜ける
+        }
+
+        //エフェクトのインスタンス生成
+        GameObject effect0 = Instantiate(_eFfectPrefab, Player.transform.position, Quaternion.identity);
+        // エフェクトをエネミーの子に設定する
+        effect0.transform.SetParent(Player.transform);
+        //エフェクトの削除
+        Destroy(effect0, 1.5f);
+      
+        //SEの再生
+        AudioSource.PlayClipAtPoint(_sOund, transform.position);
+
+        // アイテムは破壊する。
+        Destroy(this.gameObject);
     }
 }

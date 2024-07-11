@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Item0_Info : Item_Information
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -11,7 +12,7 @@ public class Item0_Info : Item_Information
     }
 
     // Update is called once per frame
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         //êGÇÍÇΩÇÁâΩÇãNÇ±Ç∑Ç©
         if (other.gameObject.tag == "Player")
