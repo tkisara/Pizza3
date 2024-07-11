@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class PlayerStateMachine : MonoBehaviour
 {
@@ -12,16 +11,17 @@ public class PlayerStateMachine : MonoBehaviour
     private State _state = State.Idle;
     private State _nextState = State.Idle;
 
-    private Transform _target;
-    private NavMeshAgent _agent;
-    Rigidbody _rb;
+    private Rigidbody _rb;
+    private Rigidbody _targetrb;
+    private Vector3 _playerPos;
+    [SerializeField] private float _force = 400;
+    [SerializeField] private float _speed = 20;
     // Start is called before the first frame update
     void Start()
     {
-        _target = GameObject.Find("Player").transform;
+        Application.targetFrameRate = 60;
         _rb = GetComponent<Rigidbody>();
-        _rb.constraints = RigidbodyConstraints.FreezeRotation;
-        _agent = GetComponent<NavMeshAgent>();
+        _playerPos = GetComponent<Transform>().position;
         IdleStart();
     }
 
@@ -102,7 +102,15 @@ public class PlayerStateMachine : MonoBehaviour
     }
     private void MovementUpdate()
     {
-        _agent.SetDestination(transform.position);
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
+        _rb.velocity = new Vector3(x * _speed, 0, z * _speed);
+        Vector3 _diff = transform.position - _playerPos;
+        if (_diff.magnitude > 0.01f)
+        {
+            transform.rotation = Quaternion.LookRotation(_diff);
+        }
+        _playerPos = transform.position;
     }
     private void MovementEnd()
     {
@@ -121,5 +129,18 @@ public class PlayerStateMachine : MonoBehaviour
     private void DeadEnd()
     {
         Debug.Log("DeadStateèIóπ");
+    }
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            _targetrb = col.gameObject.GetComponent<Rigidbody>();
+
+            Vector3 posA = transform.position;
+            Vector3 posB = col.transform.position;
+            Vector3 direction = (posB - posA).normalized;
+
+            _targetrb.AddForce(direction * _force, ForceMode.Impulse);
+        }
     }
 }
