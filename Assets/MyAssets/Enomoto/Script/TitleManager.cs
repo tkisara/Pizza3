@@ -18,7 +18,7 @@ public class TitleManager : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetKey(KeyCode.A) || Input.GetButtonDown("Fire1"))
+        if(Input.GetKey(KeyCode.A) || Input.GetButtonDown("GamePad_Entre"))
         {
             switch (nm)
             {
@@ -33,6 +33,21 @@ public class TitleManager : MonoBehaviour
                 case 2:
                     _Vcam2.SetActive(false);
                     nm = 3;
+                    break;
+            }
+        }
+        
+        if (Input.GetKey(KeyCode.B) || Input.GetButtonDown("GamePad_Back"))
+        {
+            switch (nm)
+            {
+                case 1:
+                    _Vcam0.SetActive(true);
+                    nm = 0;
+                    break;
+                case 2:
+                    _Vcam1.SetActive(true);
+                    nm = 1;
                     break;
             }
         }
