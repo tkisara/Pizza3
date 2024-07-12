@@ -188,6 +188,13 @@ public class AudioManeger : MonoBehaviour
         _eventSystem.SetSelectedGameObject(_firstB);
     }
     //--------------------------------------------------------------------------------------
+    //閉じるボタン
+    public void CloseButton()
+    {
+        //サウンド設定UIを閉じる
+        _audioSettingCanvas.enabled = false;
+    }
+    //--------------------------------------------------------------------------------------
     //プラスボタン　BGM音量
     public void BGMVolumePlusButton()
     {
