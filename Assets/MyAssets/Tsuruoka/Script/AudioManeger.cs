@@ -63,8 +63,8 @@ public class AudioManeger : MonoBehaviour
 
     //BGMの音量
     private float _bgmVolume;
-    //SEの音量
-    private float _seVolume;
+    //SEの音量　全てのプレイヤが参照する
+    public float _seVolume;
 
     //BGMの種類を表示するText
     [SerializeField] private TextMeshProUGUI _bgmTypeText;
@@ -89,7 +89,7 @@ public class AudioManeger : MonoBehaviour
         _eventSystem = EventSystem.current;
 
         //サウンド設定UIを非表示にする
-        //audioSettingCanvas.enabled = false;
+        _audioSettingCanvas.enabled = false;
         //最初に再生されるBGMの設定
         _bgmNumber = 0;
         //音量設定
@@ -120,6 +120,16 @@ public class AudioManeger : MonoBehaviour
         //Text表示
         _bgmVolumeText.text = _bgmVolume.ToString();
         _bgmTypeText.text = _bgmName[_bgmNumber];
+
+        //動作確認のための処理
+        //後で必ず消す
+        {
+            if(Input.GetKeyDown(KeyCode.Z))
+            {
+                OpenUI();
+            }
+        }
+        //
     }
     //--------------------------------------------------------------
     //指定したフォルダ内の音源を配列に入れる
@@ -169,6 +179,15 @@ public class AudioManeger : MonoBehaviour
         return subString;
     }
     //--------------------------------------------------------------------------------------
+    //サウンド設定UIを開く
+    public void OpenUI()
+    {
+        //表示
+        _audioSettingCanvas.enabled = true;
+        //初期ボタンの設定
+        _eventSystem.SetSelectedGameObject(_firstB);
+    }
+    //--------------------------------------------------------------------------------------
     //プラスボタン　BGM音量
     public void BGMVolumePlusButton()
     {
@@ -196,7 +215,8 @@ public class AudioManeger : MonoBehaviour
     {
         if (_bgmNumber == _bgmClips.Length - 1)
         {
-            //上限だったらプラスしない
+            //上限だったら０にする　選択肢をループさせるため
+            _bgmNumber = 0;
             return;
         }
         _bgmNumber++;
@@ -229,7 +249,8 @@ public class AudioManeger : MonoBehaviour
     {
         if (_bgmNumber == 0)
         {
-            //下限だったらプラスしない
+            //下限だったらBGM配列の最後尾の番号を入れる　選択肢をループさせるため
+            _bgmNumber = _bgmClips.Length - 1;
             return;
         }
         _bgmNumber--;
