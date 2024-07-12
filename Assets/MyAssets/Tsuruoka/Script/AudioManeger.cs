@@ -52,7 +52,9 @@ public class AudioManeger : MonoBehaviour
     }
 
     //ファイルパス　BGM
-    private const string _fPath = "Sound/BGM";
+    private const string _bgmFPath = "Sound/BGM";
+    //ファイルパス　SE
+    private const string _seFPath = "Sound/SE";
 
     //BGM入れる配列
     [SerializeField] private AudioClip[] _bgmClips;
@@ -60,6 +62,8 @@ public class AudioManeger : MonoBehaviour
     [SerializeField] private string[] _bgmName;
     //配列番号　BGM配列と名前配列で共通
     private int _bgmNumber;
+    //SEを入れる配列
+    [SerializeField] private AudioClip[] _seClips;
 
     //BGMの音量
     private float _bgmVolume;
@@ -97,7 +101,9 @@ public class AudioManeger : MonoBehaviour
         _seVolume = 5;
 
         //BGM配列の設定
-        InData(ref  _bgmClips, _fPath);
+        InData(ref  _bgmClips, _bgmFPath);
+        //SE配列の設定
+        InData(ref _seClips, _seFPath);
         //名前配列の設定
         _bgmName = new string[_bgmClips.Length];
         for (int i = 0; i < _bgmClips.Length; i++)
