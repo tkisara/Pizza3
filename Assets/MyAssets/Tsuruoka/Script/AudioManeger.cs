@@ -25,8 +25,11 @@ public class AudioManeger : MonoBehaviour
         }
     }
 
-    //オーディオコンポネント
+    //オーディオコンポネント　BGM
     private AudioSource _audioSource;
+    //オーディオコンポネント　SE
+    [SerializeField] private GameObject _audioSEObj;
+    private AudioSource _audioSourceSE;
 
     //スタートよりも早く処理する
     private void Awake()
@@ -89,6 +92,7 @@ public class AudioManeger : MonoBehaviour
     {
         //コンポネント取得
         _audioSource = GetComponent<AudioSource>();
+        _audioSourceSE = _audioSEObj.GetComponent<AudioSource>();
         //イベントシステムのインスタンス生成
         _eventSystem = EventSystem.current;
 
@@ -120,11 +124,15 @@ public class AudioManeger : MonoBehaviour
     {
         //BGMの更新
         AudioUpdate(_bgmClips[_bgmNumber]);
+
         //BGMの音量設定
         _audioSource.volume = (_bgmVolume / 10);
+        //SEの音量設定
+        _audioSourceSE.volume = (_seVolume / 10);
 
         //Text表示
         _bgmVolumeText.text = _bgmVolume.ToString();
+        _seVolumeText.text = _seVolume.ToString();
         _bgmTypeText.text = _bgmName[_bgmNumber];
 
         //動作確認のための処理
@@ -192,6 +200,12 @@ public class AudioManeger : MonoBehaviour
         _audioSettingCanvas.enabled = true;
         //初期ボタンの設定
         _eventSystem.SetSelectedGameObject(_firstB);
+    }
+    //--------------------------------------------------------------------------------------
+    //ボタン押下のSE
+    public void OnButtonSE()
+    {
+        _audioSourceSE.PlayOneShot(_seClips[0]);
     }
     //--------------------------------------------------------------------------------------
     //閉じるボタン
