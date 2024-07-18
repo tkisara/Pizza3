@@ -5,8 +5,8 @@ using UnityEngine;
 public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
 {
     //エフェクトの発生、SEの発生、Itemの削除
-    [SerializeField] GameObject _eFfectPrefab;
-    [SerializeField] AudioClip _sOund;
+    [SerializeField] GameObject _effectPrefab;
+    [SerializeField] AudioClip _sound;
    
     // Start is called before the first frame update
     // （ポイント）先頭に「public」をつけること。
@@ -36,14 +36,14 @@ public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
         }
 
         //エフェクトのインスタンス生成
-        GameObject effect0 = Instantiate(_eFfectPrefab, Player.transform.position, Quaternion.identity);
+        GameObject effect0 = Instantiate(_effectPrefab, Player.transform.position, Quaternion.identity);
         // エフェクトをエネミーの子に設定する
         effect0.transform.SetParent(Player.transform);
         //エフェクトの削除
         Destroy(effect0, 1.5f);
       
         //SEの再生
-        AudioSource.PlayClipAtPoint(_sOund, transform.position);
+        AudioSource.PlayClipAtPoint(_sound, transform.position);
 
         // アイテムは破壊する。
         Destroy(this.gameObject);
