@@ -28,7 +28,7 @@ public class PSEAttackState : PSEState
 
     }
     //----------------------------------------------------------------------------------------------
-    //
+    //State遷移
     public override PSEStateMachine.PSEStates GetNextState()
     {
         return StateKey;

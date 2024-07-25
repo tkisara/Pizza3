@@ -41,7 +41,7 @@ public class AudioManeger : MonoBehaviour
         //シングルトンのインスタンスを設定
         if (_instance == null)
         {
-            Debug.Log("AudioManager instance is null, setting this instance.");
+            //Debug.Log("AudioManager instance is null, setting this instance.");
             _instance = this;
             DontDestroyOnLoad(gameObject);
         }

@@ -3,7 +3,6 @@ using static PSEStateMachine;
 
 public class PSENoneState : PSEState
 {
-    private PSEStates _nextState; //éüÇÃState
     //----------------------------------------------------------------------------------------------
     public PSENoneState(PSEStateContext context, PSEStateMachine.PSEStates estate) : base(context, estate)
     {
@@ -26,18 +25,20 @@ public class PSENoneState : PSEState
     public override void UpdateState()
     {
         Debug.Log("NoneStateíÜ");
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKeyDown(KeyCode.X))
         {
-            _nextState = PSEStates.Walk;
             GetNextState();
         }
     }
     //----------------------------------------------------------------------------------------------
-    //
+    //StateëJà⁄
     public override PSEStateMachine.PSEStates GetNextState()
     {
-        //return StateKey;
-        return _nextState;
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            return PSEStates.Walk;
+        }
+        return StateKey;
     }
     //----------------------------------------------------------------------------------------------
     //ìñÇΩÇËîªíË(êGÇÍÇΩÇÁ)
