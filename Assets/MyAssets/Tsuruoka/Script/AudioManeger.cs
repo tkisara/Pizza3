@@ -146,12 +146,18 @@ public class AudioManeger : MonoBehaviour
         _seVolumeText.text = _seVolume.ToString();
         _bgmTypeText.text = _bgmName[_bgmNumber];
 
-        //動作確認のための処理
-        //後で必ず消す
+        
         {
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
+            if (Input.GetButtonDown("GamePad_Entre"))
+            {//UIを開く
                 OpenUI();
+            }
+            if (_audioSettingCanvas.enabled == true)
+            {
+                if(Input.GetButtonDown("GamePad_Back"))
+                {//UIを閉じる
+                    CloseButton();
+                }
             }
         }
         //
