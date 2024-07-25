@@ -17,17 +17,22 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.PlayerStates>
 
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private Collider _col;
+    [SerializeField] private Transform _myTransform;
+    [SerializeField] private GameObject _enemyObject;
+    [SerializeField] private float _playerSpeed = 30;
 
     void Awake()
     {
         NullMessage();
-        _context = new PlayerStateContext(_rb,_col);
+        _context = new PlayerStateContext(_rb,_col,_playerSpeed,_myTransform,_enemyObject);
         InitializeStates();
     }
 
     private void NullMessage()
     {
         Assert.IsNotNull(_rb, "_rb‚ªnull‚Å‚·");
+        Assert.IsNotNull(_col, "_col‚ªnull‚Å‚·");
+        Assert.IsNotNull(_enemyObject, "_col‚ªnull‚Å‚·");
     }
     // PlayerStateMachine‚Åg‚¤State‚Ì‰Šú‰»‚ÆÅ‰‚ÉŒÄ‚Ño‚³‚ê‚éState‚Ìw’è
     private void InitializeStates()

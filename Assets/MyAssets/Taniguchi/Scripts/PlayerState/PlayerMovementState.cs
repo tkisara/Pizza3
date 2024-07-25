@@ -8,6 +8,7 @@ public class PlayerMovementState : PlayerState
     }
     public override void EnterState()
     {
+        
         Debug.Log("MovementStateŠJŽn");
     }
 
@@ -18,6 +19,9 @@ public class PlayerMovementState : PlayerState
 
     public override void UpdateState()
     {
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+        Context.myTransform.position += new Vector3(x, 0, z) * Context.pspeed * Time.deltaTime;
         Debug.Log("MovementState’†");
     }
     public override PlayerStateMachine.PlayerStates GetNextState()
@@ -31,7 +35,13 @@ public class PlayerMovementState : PlayerState
 
     public override void OnTriggerEnter(Collider other)
     {
-
+        Rigidbody _other = other.GetComponent<Rigidbody>();
+        if(other.gameObject.tag == "Player")
+        {
+            Debug.Log("“–‚½‚Á‚½");
+            _other.AddForce(new Vector3(0, 10, 0));
+        }
+        
     }
 
     public override void OnTriggerStay(Collider other)
