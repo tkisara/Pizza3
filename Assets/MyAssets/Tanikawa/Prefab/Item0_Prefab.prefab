@@ -148,6 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e5db94d78a98e4eaa4f96c51975031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eFfectPrefab: {fileID: 7155335147208632822, guid: afcac5fac34f8b149ae175b49ac7d244,
+  _effectPrefab: {fileID: 7155335147208632822, guid: afcac5fac34f8b149ae175b49ac7d244,
     type: 3}
-  _sOund: {fileID: 8300000, guid: cd02c5d2f1d0f884c991a0967522bce2, type: 3}
+  _sound: {fileID: 8300000, guid: cd02c5d2f1d0f884c991a0967522bce2, type: 3}
