@@ -14,19 +14,25 @@ public class AudioManeger : MonoBehaviour
     {
         get
         {
-            if(_instance == null)
+            if (_instance == null)
             {
-                //オーディオマネージャーが存在しない場合は新しく作成
-                GameObject _obj = new GameObject("AudioManeger");
-                _instance = _obj.AddComponent<AudioManeger>();
-                DontDestroyOnLoad(_obj);
+                _instance = FindObjectOfType<AudioManeger>();
+                if (_instance == null)
+                {
+                    GameObject _obj = new GameObject("AudioManeger");
+                    _instance = _obj.AddComponent<AudioManeger>();
+                    DontDestroyOnLoad(_obj);
+                }
             }
             return _instance;
         }
     }
 
-    //オーディオコンポネント
+    //オーディオコンポネント　BGM
     private AudioSource _audioSource;
+    //オーディオコンポネント　SE
+    [SerializeField] private GameObject _audioSEObj;
+    private AudioSource _audioSourceSE;
 
     //スタートよりも早く処理する
     private void Awake()
@@ -35,12 +41,15 @@ public class AudioManeger : MonoBehaviour
         //シングルトンのインスタンスを設定
         if (_instance == null)
         {
+            Debug.Log("AudioManager instance is null, setting this instance.");
             _instance = this;
-            DontDestroyOnLoad (gameObject);
+            DontDestroyOnLoad(gameObject);
         }
-        else
+        else if (_instance != null)
         {
-            Destroy(gameObject);
+            //Debug.Log("AudioManager instance already exists, destroying this instance.");
+            //Destroy(gameObject);
+            //return;
         }
 
         //オーディオソースの初期化
@@ -49,12 +58,17 @@ public class AudioManeger : MonoBehaviour
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        if (_audioSEObj != null)
+        {
+            _audioSourceSE = _audioSEObj.GetComponent<AudioSource>();
+        }
     }
 
     //ファイルパス　BGM
     private const string _bgmFPath = "Sound/BGM";
     //ファイルパス　SE
-    private const string _seFPath = "Sound/SE";
+    private const string _seFPath = "Sound/SE/Mane";
 
     //BGM入れる配列
     [SerializeField] private AudioClip[] _bgmClips;
@@ -89,6 +103,7 @@ public class AudioManeger : MonoBehaviour
     {
         //コンポネント取得
         _audioSource = GetComponent<AudioSource>();
+        //_audioSourceSE = _audioSEObj.GetComponent<AudioSource>();
         //イベントシステムのインスタンス生成
         _eventSystem = EventSystem.current;
 
@@ -101,7 +116,7 @@ public class AudioManeger : MonoBehaviour
         _seVolume = 5;
 
         //BGM配列の設定
-        InData(ref  _bgmClips, _bgmFPath);
+        InData(ref _bgmClips, _bgmFPath);
         //SE配列の設定
         InData(ref _seClips, _seFPath);
         //名前配列の設定
@@ -120,17 +135,21 @@ public class AudioManeger : MonoBehaviour
     {
         //BGMの更新
         AudioUpdate(_bgmClips[_bgmNumber]);
+
         //BGMの音量設定
         _audioSource.volume = (_bgmVolume / 10);
+        //SEの音量設定
+        _audioSourceSE.volume = (_seVolume / 10);
 
         //Text表示
         _bgmVolumeText.text = _bgmVolume.ToString();
+        _seVolumeText.text = _seVolume.ToString();
         _bgmTypeText.text = _bgmName[_bgmNumber];
 
         //動作確認のための処理
         //後で必ず消す
         {
-            if(Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 OpenUI();
             }
@@ -192,6 +211,12 @@ public class AudioManeger : MonoBehaviour
         _audioSettingCanvas.enabled = true;
         //初期ボタンの設定
         _eventSystem.SetSelectedGameObject(_firstB);
+    }
+    //--------------------------------------------------------------------------------------
+    //ボタン押下のSE
+    public void OnButtonSE()
+    {
+        _audioSourceSE.PlayOneShot(_seClips[0]);
     }
     //--------------------------------------------------------------------------------------
     //閉じるボタン
