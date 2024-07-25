@@ -1,46 +1,44 @@
 using UnityEngine;
 
-public class PlayerIdleState:PlayerState
+public class PlayerDeadState : PlayerState
 {
-    public PlayerIdleState(PlayerStateContext context,PlayerStateMachine.PlayerStates estate):base(context, estate)
+    public PlayerDeadState(PlayerStateContext context, PlayerStateMachine.PlayerStates estate) : base(context, estate)
     {
         PlayerStateContext Context = context;
     }
-
-    
     public override void EnterState()
     {
-        Debug.Log("IdleState開始");
+        Debug.Log("DeadState開始");
     }
-    
+
     public override void ExitState()
     {
-        Debug.Log("IdleState終了");
+        Debug.Log("DeadState終了");
     }
-    
+
     public override void UpdateState()
     {
-        Debug.Log("IdleState中");
+        Debug.Log("DeadState中");
     }
     public override PlayerStateMachine.PlayerStates GetNextState()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            return PlayerStateMachine.PlayerStates.Movement;
+            return PlayerStateMachine.PlayerStates.Idle;
         }
         return StateKey;
     }
-    
+
     public override void OnTriggerEnter(Collider other)
     {
 
     }
-    
+
     public override void OnTriggerStay(Collider other)
     {
 
     }
-    
+
     public override void OnTriggerExit(Collider other)
     {
 
