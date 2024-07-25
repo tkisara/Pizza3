@@ -41,7 +41,7 @@ public class AudioManeger : MonoBehaviour
         //シングルトンのインスタンスを設定
         if (_instance == null)
         {
-            Debug.Log("AudioManager instance is null, setting this instance.");
+            //Debug.Log("AudioManager instance is null, setting this instance.");
             _instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -112,8 +112,8 @@ public class AudioManeger : MonoBehaviour
         //最初に再生されるBGMの設定
         _bgmNumber = 0;
         //音量設定
-        _bgmVolume = 5;
-        _seVolume = 5;
+        _bgmVolume = 3;
+        _seVolume = 8;
 
         //BGM配列の設定
         InData(ref _bgmClips, _bgmFPath);

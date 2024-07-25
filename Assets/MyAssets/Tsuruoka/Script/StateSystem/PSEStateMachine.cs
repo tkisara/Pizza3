@@ -8,8 +8,10 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
     /// <summary>
     public enum PSEStates
     {
-        None, //無効（使えない）
-        Walk,
+        Idel,
+        Movement,
+        Jump,
+        Dead,
     }
 
     private PSEStateContext _context;
@@ -27,6 +29,8 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
     {
         //エラーメッセージ表示
         NullMessage();
+        //SEの読み込み
+        InData(ref _Seclips, _fPath);
         //共有エリアに追加したものを引数に持たせる
         _context = new PSEStateContext(_as, _Seclips);
 
@@ -34,8 +38,7 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
 
         //音量設定
         UpdateVolume();
-        //SEの読み込み
-        InData(ref _Seclips, _fPath);
+        
     }
     //----------------------------------------------------------------------------------------------
     private void NullMessage()
@@ -47,11 +50,12 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
     private void InitializeStates()
     {
         //追加したState
-        States.Add(PSEStates.None, new PSENoneState(_context, PSEStates.None));
-        States.Add(PSEStates.Walk, new PSEWalkState(_context, PSEStates.Walk));
-
+        States.Add(PSEStates.Idel, new PSEIdelState(_context, PSEStates.Idel));
+        States.Add(PSEStates.Movement, new PSEMovementState(_context, PSEStates.Movement));
+        States.Add(PSEStates.Jump, new PSEJumpState(_context, PSEStates.Jump));
+        States.Add(PSEStates.Dead, new PSEDeadState(_context, PSEStates.Dead));
         //最初に呼び出すState
-        CurrentState = States[PSEStates.None];
+        CurrentState = States[PSEStates.Idel];
     }
     //----------------------------------------------------------------------------------------------
     //追加メソッドはここに書く
