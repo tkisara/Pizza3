@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1026905126228844446}
   - component: {fileID: 8142111587973869505}
   - component: {fileID: 6054704170590101941}
-  - component: {fileID: 2769519508012721687}
   - component: {fileID: 7135808284693135747}
   - component: {fileID: 1781969758008906992}
+  - component: {fileID: 947563703274583999}
   m_Layer: 0
   m_Name: Item2_Prefab
   m_TagString: Item2
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6511548519407494569}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4181887926267105550, guid: ec7053f625024924f8a48594eb63c254, type: 3}
 --- !u!23 &6054704170590101941
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4c318370e1bee9a429976c1d63f77fc7, type: 2}
+  - {fileID: 2100000, guid: c11a63218caa79947a1a169e6d1f5da4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,29 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2769519508012721687
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6511548519407494569}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7135808284693135747
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -117,7 +94,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6511548519407494569}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -150,4 +127,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 7053385775836331393, guid: 0a375934b2abbbf468d56793c8013a07,
     type: 3}
-  _sound: {fileID: 8300000, guid: cd02c5d2f1d0f884c991a0967522bce2, type: 3}
+  _sound: {fileID: 8300000, guid: 67e996e8a62982342a9fd1f852b5a16b, type: 3}
+--- !u!64 &947563703274583999
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6511548519407494569}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4181887926267105550, guid: ec7053f625024924f8a48594eb63c254, type: 3}

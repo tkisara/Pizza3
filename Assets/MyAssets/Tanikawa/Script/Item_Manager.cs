@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Item_Manager : MonoBehaviour
 {
@@ -39,9 +40,15 @@ public class Item_Manager : MonoBehaviour
     void ItemFall()
     {
         _number = Random.Range(0, Prefabs.Length); // プレファブ配列からランダムにインデックスを選ぶ
-        _posX = Random.Range(_rmin, _rmax);
-        _posZ = Random.Range(_rmin, _rmax);
-        Instantiate(Prefabs[_number], new Vector3(_posX, 50, _posZ), Quaternion.identity); // 選ばれたプレファブを生成
+
+        float angle = Random.Range(0, 360);
+        float radian = Mathf.Deg2Rad * angle;
+        float distance = Random.Range(_rmin, _rmax);
+
+        float x = Mathf.Cos(radian) * distance;
+        float z = Mathf.Sin(radian) * distance;
+
+        Instantiate(Prefabs[_number], new Vector3(x, 50, z), Quaternion.identity); // 選ばれたプレファブを生成
         _time = Random.Range(_rmin, _rmax);
     }
 }

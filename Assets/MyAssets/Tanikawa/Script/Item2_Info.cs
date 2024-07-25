@@ -21,4 +21,11 @@ public class Item2_Info : Item_Information
         }
 
     }
+    private void Update()
+    {
+        if (gameObject.transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
