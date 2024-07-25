@@ -19,8 +19,8 @@ public class PlayerMovementState : PlayerState
 
     public override void UpdateState()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal0");
+        float z = Input.GetAxis("Vertical0");
         Context.myTransform.position += new Vector3(x, 0, z) * Context.pspeed * Time.deltaTime;
         Debug.Log("MovementState’†");
     }
@@ -39,7 +39,7 @@ public class PlayerMovementState : PlayerState
         if(other.gameObject.tag == "Player")
         {
             Debug.Log("“–‚½‚Á‚½");
-            _other.AddForce(new Vector3(0, 10, 0));
+            _other.AddForce(new Vector3(100, 10, 0),ForceMode.Impulse);
         }
         
     }
