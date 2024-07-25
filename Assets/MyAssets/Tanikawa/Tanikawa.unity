@@ -1203,16 +1203,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pizzaPrefabs:
-  - {fileID: 7470594128367280787, guid: 8cdbd985084d5d64aada0375fccbc601, type: 3}
+  - {fileID: 2140105077}
   - {fileID: 655971588}
   - {fileID: 1500898164}
   - {fileID: 2069818386}
   - {fileID: 407692331}
   - {fileID: 330151905}
-  speed: 0.05
+  speed: 0.5
 --- !u!1 &2069818386 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7470594128367280787, guid: 8cdbd985084d5d64aada0375fccbc601,
     type: 3}
   m_PrefabInstance: {fileID: 1795877718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2140105077 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7470594128367280787, guid: 8cdbd985084d5d64aada0375fccbc601,
+    type: 3}
+  m_PrefabInstance: {fileID: 801224980}
   m_PrefabAsset: {fileID: 0}
