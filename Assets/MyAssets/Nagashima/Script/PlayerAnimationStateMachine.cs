@@ -34,6 +34,7 @@ public class PlayerAnimationStateMachine : StateManager<PlayerAnimationStateMach
     private void InitializeStates()
     {
         States.Add(PlayerAnimationStates.Idle, new PlayerAnimationIdleState(_context, PlayerAnimationStates.Idle));
+        States.Add(PlayerAnimationStates.Movement, new PlayerAnimationMovementState(_context, PlayerAnimationStates.Movement));
         //IdleState‚ðÅ‰‚ÉŒÄ‚Ño‚·
         CurrentState = States[PlayerAnimationStates.Idle];
     }
