@@ -7,7 +7,17 @@ public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
     //エフェクトの発生、SEの発生、Itemの削除
     [SerializeField] GameObject _effectPrefab;
     [SerializeField] AudioClip _sound;
-   
+
+    //プレイヤーの変更値→攻撃力、スピード、身体増幅
+    public static float _addForce;
+    public static float _speed;
+    public static float _body;
+
+    public float _time;
+
+    private void Start()
+    {
+    }
     // Start is called before the first frame update
     // （ポイント）先頭に「public」をつけること。
     public void ItemBase(GameObject Player)
@@ -18,20 +28,23 @@ public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
         {
             case "Item0": //Item0の時
                 //プレイヤーの値を書き換える
+                _addForce *= 1.5f;
                 Debug.Log("Item0"); 
                 break;  
 
             case "Item1":
                 //プレイヤーの値を書き換える
+                _speed += 0.5f;
                 Debug.Log("Item1"); 
                 break; 
 
             case "Item2":
                 //プレイヤーの値を書き換える
+                _body *= 1.5f;
                 Debug.Log("Item2"); 
                 break; 
 
-            default:    
+            default:
                 break; //switch文から抜ける
         }
 
@@ -47,5 +60,15 @@ public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
 
         // アイテムは破壊する。
         Destroy(this.gameObject);
+    }
+    private void Update()
+    {
+        _time += Time.deltaTime;
+
+        if (_time < 10) {
+            _addForce = 0;
+            _speed = 0;
+            _body = 0;
+        }
     }
 }
