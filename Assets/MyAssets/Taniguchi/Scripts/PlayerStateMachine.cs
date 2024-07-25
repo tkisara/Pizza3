@@ -10,7 +10,6 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.PlayerStates>
     {
         Idle,
         Movement,
-        Action,
         Dead
     }
 
@@ -34,6 +33,8 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.PlayerStates>
     private void InitializeStates()
     {
         States.Add(PlayerStates.Idle, new PlayerIdleState(_context, PlayerStates.Idle));
+        States.Add(PlayerStates.Movement, new PlayerMovementState(_context, PlayerStates.Movement));
+        States.Add(PlayerStates.Dead, new PlayerDeadState(_context, PlayerStates.Dead));
         //IdleState‚ğÅ‰‚ÉŒÄ‚Ño‚·
         CurrentState = States[PlayerStates.Idle];
     }
