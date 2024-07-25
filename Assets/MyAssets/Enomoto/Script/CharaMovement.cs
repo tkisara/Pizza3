@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         // ˆÚ“®
         float x = Input.GetAxisRaw("Horizontal" + PlayerNo);
         float z = Input.GetAxisRaw("Vertical" + PlayerNo);
-        transform.position += new Vector3(x, 0,z) * Speed * Time.deltaTime;
+        transform.position += new Vector3(x,0,z) * Speed * Time.deltaTime;
 
         //ƒWƒƒƒ“ƒv
 

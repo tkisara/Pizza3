@@ -18,7 +18,7 @@ public class TitleManager : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetKey(KeyCode.A) || Input.GetButtonDown("GamePad_Entre"))
+        if(Input.GetKey(KeyCode.A) || Input.GetButtonDown("GamePad_Enter"))
         {
             switch (nm)
             {
