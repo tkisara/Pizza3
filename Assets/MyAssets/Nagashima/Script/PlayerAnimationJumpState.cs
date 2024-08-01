@@ -4,25 +4,25 @@ using UnityEngine;
 using UnityEngine.Playables;
 using static PlayerAnimationStateMachine;
 
-public class PlayerAnimationIdleState : PlayerAnimationState
+public class PlayerAnimationJumpState : PlayerAnimationState
 {
-    public PlayerAnimationIdleState(PlayerAnimationStateContext context, PlayerAnimationStateMachine.PlayerAnimationStates estate) : base(context, estate)
+    public PlayerAnimationJumpState(PlayerAnimationStateContext context, PlayerAnimationStateMachine.PlayerAnimationStates estate) : base(context, estate)
     {
         PlayerAnimationStateContext Context = context;
     }
     public override void EnterState()
     {
-        Debug.Log("IdleState開始");
-        Context.animator.SetBool("Idle", true);
+        Debug.Log("JumpState開始");
+        Context.animator.SetBool("Jump", true);
     }
     public override void ExitState()
     {
         Debug.Log("IdleState終了");
-        Context.animator.SetBool("Idle", false);
+        Context.animator.SetBool("Jump", false);
     }
     public override void UpdateState()
     {
-        Debug.Log("IdleState中");
+        Debug.Log("JumpState中");
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //MonoBehaviour.Destroy();
@@ -31,10 +31,6 @@ public class PlayerAnimationIdleState : PlayerAnimationState
     }
     public override PlayerAnimationStateMachine.PlayerAnimationStates GetNextState()
     {
-        if(Context.pm._currentState == PlayerMovementStateMachine.StateType.Movement)
-        {
-            return PlayerAnimationStates.Movement;
-        }
         if (Context.pm._currentState == PlayerMovementStateMachine.StateType.Jump)
         {
             return PlayerAnimationStates.Jump;

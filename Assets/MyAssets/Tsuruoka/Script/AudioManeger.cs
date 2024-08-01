@@ -110,7 +110,7 @@ public class AudioManeger : MonoBehaviour
         //サウンド設定UIを非表示にする
         _audioSettingCanvas.enabled = false;
         //最初に再生されるBGMの設定
-        _bgmNumber = 0;
+        _bgmNumber = 4;
         //音量設定
         _bgmVolume = 3;
         _seVolume = 8;

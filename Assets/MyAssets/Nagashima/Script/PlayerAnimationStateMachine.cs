@@ -10,31 +10,32 @@ public class PlayerAnimationStateMachine : StateManager<PlayerAnimationStateMach
     {
         Idle,
         Movement,
+        Jump,
         Action,
         Dead
     }
 
     private PlayerAnimationStateContext _context;
 
-    [SerializeField] private Rigidbody _rb;
-    [SerializeField] private Collider _col;
     [SerializeField] private Animator _animator;
+    [SerializeField] private PlayerMovementStateMachine pMovementStateMachine;
 
     void Awake()
     {
         NullMessage();
-        _context = new PlayerAnimationStateContext(_rb, _col,_animator);
+        _context = new PlayerAnimationStateContext(_animator,pMovementStateMachine);
         InitializeStates();
     }
     private void NullMessage()
     {
-        Assert.IsNotNull(_rb, "_rbがnullです");
+        Assert.IsNotNull(pMovementStateMachine, "_ないようがないよう");
     }
     // PlayerStateMachineで使うStateの初期化と最初に呼び出されるStateの指定
     private void InitializeStates()
     {
         States.Add(PlayerAnimationStates.Idle, new PlayerAnimationIdleState(_context, PlayerAnimationStates.Idle));
         States.Add(PlayerAnimationStates.Movement, new PlayerAnimationMovementState(_context, PlayerAnimationStates.Movement));
+        States.Add(PlayerAnimationStates.Jump, new PlayerAnimationJumpState(_context, PlayerAnimationStates.Jump));
         //IdleStateを最初に呼び出す
         CurrentState = States[PlayerAnimationStates.Idle];
     }

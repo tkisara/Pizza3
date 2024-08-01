@@ -32,6 +32,18 @@ public class PSEIdelState : PSEState
     //
     public override PSEStateMachine.PSEStates GetNextState()
     {
+        if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Jump)
+        {
+            return PSEStates.Jump;
+        }
+        if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Movement)
+        {
+            return PSEStates.Movement;
+        }
+        if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Dead)
+        {
+            return PSEStates.Dead;
+        }
         return StateKey;
     }
     //----------------------------------------------------------------------------------------------
@@ -39,6 +51,8 @@ public class PSEIdelState : PSEState
     public override void OnTriggerEnter(Collider other)
     {
         //アイテムを拾ったとき
+        string tag = other.tag;
+        if(tag.Contains("Item"))
         {
             Context.audioSource.Stop(); //歩く　ループ再生の停止
             Context.audioSource.pitch = 1;

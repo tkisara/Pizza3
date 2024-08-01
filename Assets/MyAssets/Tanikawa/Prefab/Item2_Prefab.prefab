@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6511548519407494569}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.11871, z: 0}
+  m_LocalScale: {x: 3.2804, y: 3.2804, z: 2.9533114}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -128,6 +128,7 @@ MonoBehaviour:
   _effectPrefab: {fileID: 7053385775836331393, guid: 0a375934b2abbbf468d56793c8013a07,
     type: 3}
   _sound: {fileID: 8300000, guid: 67e996e8a62982342a9fd1f852b5a16b, type: 3}
+  _time: 0
 --- !u!64 &947563703274583999
 MeshCollider:
   m_ObjectHideFlags: 0

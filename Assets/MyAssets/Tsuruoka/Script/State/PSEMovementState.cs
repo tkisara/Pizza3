@@ -45,18 +45,33 @@ public class PSEMovementState : PSEState
     //
     public override PSEStateMachine.PSEStates GetNextState()
     {
+        if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Idle)
+        {
+            return PSEStates.Idel;
+        }
+        if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Jump)
+        {
+            return PSEStates.Jump;
+        }
+        if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Dead)
+        {
+            return PSEStates.Dead;
+        }
         return StateKey;
     }
     //----------------------------------------------------------------------------------------------
     //当たり判定(触れたら)
     public override void OnTriggerEnter(Collider other)
     {
+        string tag = other.tag;
         //他のプレイヤとぶつかったとき
+        if(tag.Contains("Player"))
         {
             Context.audioSource.Stop(); //歩く　ループ再生の停止
             Context.audioSource.pitch = 1;
             Context.audioSource.PlayOneShot(Context.seclips[2]); //接触
         }
+        if(tag.Contains("Item"))
         //アイテムを拾ったとき
         {
             Context.audioSource.Stop(); //歩く　ループ再生の停止
