@@ -31,9 +31,9 @@ public class PlayerAnimationJumpState : PlayerAnimationState
     }
     public override PlayerAnimationStateMachine.PlayerAnimationStates GetNextState()
     {
-        if (Context.pm._currentState == PlayerMovementStateMachine.StateType.Dead)
+        if (Context.pm._currentState == PlayerMovementStateMachine.StateType.Jump)
         {
-            return PlayerAnimationStates.Dead;
+            return PlayerAnimationStates.Jump;
         }
         return StateKey;
     }
