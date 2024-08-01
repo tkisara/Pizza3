@@ -18,13 +18,13 @@ public class TitleManager : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetKey(KeyCode.A) || Input.GetButtonDown("GamePad_Enter"))
+        if(Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("GamePad_Entrer"))
         {
             switch (nm)
             {
                 case 0:
                     _Vcam0.SetActive(false);
-                    nm = 1;
+                    nm = 2;
                     break;
                 case 1:
                     _Vcam1.SetActive(false);
