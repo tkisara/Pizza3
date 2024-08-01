@@ -31,7 +31,7 @@ public class PlayerAnimationMovementState : PlayerAnimationState
     }
     public override PlayerAnimationStateMachine.PlayerAnimationStates GetNextState()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Context.pm._currentState == PlayerMovementStateMachine.StateType.Idle)
         {
             return PlayerAnimationStates.Idle;
         }

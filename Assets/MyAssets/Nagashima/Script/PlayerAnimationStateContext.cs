@@ -2,19 +2,17 @@ using UnityEngine;
 
 public class PlayerAnimationStateContext
 {
-    private Rigidbody _rb;
-    private Collider _col;
     private Animator _animator;
+    private PlayerMovementStateMachine _pm;
 
-    public PlayerAnimationStateContext(Rigidbody rb, Collider col, Animator animator)
+    public PlayerAnimationStateContext(Animator animator, PlayerMovementStateMachine pm)
     {
-        _rb = rb;
-        _col = col;
         _animator = animator;
+        _pm = pm;
 
     }
-    public Rigidbody rb => _rb;
-    public Collider col => _col;
     public Animator animator => _animator;
+
+    public PlayerMovementStateMachine pm => _pm;
 
 }

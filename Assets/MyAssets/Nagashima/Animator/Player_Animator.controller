@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 3442338461604649908, guid: a83ffaa0c5bb05b4f943b268ed339e6e,
+  m_Motion: {fileID: -3161294849540837124, guid: aee2ebb2c3ab8ba44a6fca1b956ae0ff,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -47,7 +47,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -3161294849540837124, guid: a83ffaa0c5bb05b4f943b268ed339e6e,
+  m_Motion: {fileID: -3161294849540837124, guid: d8aa77ddfa5fbe7439459d5763771761,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -68,19 +68,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Walk
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: Chath
+    m_Controller: {fileID: 9100000}
+  - m_Name: Jump
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -103,7 +103,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Chath
+    m_ConditionEvent: Jump
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5162280658900152975}
@@ -111,14 +111,14 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 1
+  m_ExitTime: 0.000682633
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
+  m_CanTransitionToSelf: 0
 --- !u!1107 &3287135154589725796
 AnimatorStateMachine:
   serializedVersion: 6
@@ -130,13 +130,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -7875623915115769163}
-    m_Position: {x: 480, y: 10, z: 0}
+    m_Position: {x: 470, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6973414033298266251}
     m_Position: {x: 430, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6192436328484744994}
-    m_Position: {x: 90, y: -270, z: 0}
+    m_Position: {x: 100, y: -270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5162280658900152975}
     m_Position: {x: 260, y: -180, z: 0}
@@ -160,7 +160,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Chath
+  m_Name: jump
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -173,7 +173,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -9100018897903059919, guid: a83ffaa0c5bb05b4f943b268ed339e6e,
+  m_Motion: {fileID: 3819204733282340162, guid: d8aa77ddfa5fbe7439459d5763771761,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -200,7 +200,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 2933577835342229695, guid: a83ffaa0c5bb05b4f943b268ed339e6e,
+  m_Motion: {fileID: 2933577835342229695, guid: d8aa77ddfa5fbe7439459d5763771761,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -249,7 +249,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.3669877
+  m_TransitionDuration: 0.1
   m_TransitionOffset: 0
   m_ExitTime: 0.009999865
   m_HasExitTime: 0
