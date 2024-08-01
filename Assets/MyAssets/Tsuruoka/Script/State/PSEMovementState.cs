@@ -49,6 +49,10 @@ public class PSEMovementState : PSEState
         {
             return PSEStates.Idel;
         }
+        //if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Jump)
+        //{
+        //    return PSEStates.Jump;
+        //}
         if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Dead)
         {
             return PSEStates.Dead;

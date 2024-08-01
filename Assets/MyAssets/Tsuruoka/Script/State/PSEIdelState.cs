@@ -32,6 +32,10 @@ public class PSEIdelState : PSEState
     //
     public override PSEStateMachine.PSEStates GetNextState()
     {
+        //if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Jump)
+        //{
+        //    return PSEStates.Jump;
+        //}
         if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Movement)
         {
             return PSEStates.Movement;
