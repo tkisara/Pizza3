@@ -99,7 +99,11 @@ public class PlayerMovementStateMachine : MonoBehaviour
         {
             ChangeState(StateType.Movement);
         }
-        
+        if (transform.position.y < -10)
+        {
+            ChangeState(StateType.Dead);
+        }
+
     }
     private void IdleEnd()
     {
@@ -120,6 +124,10 @@ public class PlayerMovementStateMachine : MonoBehaviour
         if (x == 0 && z == 0)
         {
             ChangeState(StateType.Idle);
+        }
+        if (transform.position.y < -10)
+        {
+            ChangeState(StateType.Dead);
         }
     }
     private void MovementEnd()
@@ -144,7 +152,7 @@ public class PlayerMovementStateMachine : MonoBehaviour
     //DeadState
     private void DeadStart()
     {
-        
+        Destroy(this.gameObject);
     }
     private void DeadUpdate()
     {
