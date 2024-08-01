@@ -83,8 +83,8 @@ public class PlayerMovementStateMachine : MonoBehaviour
     private void IdleUpdate()
     {
         Debug.Log("Idle‚¾‚æ");
-        x = Input.GetAxis("Horizontal") + _PlayerNum;
-        z = Input.GetAxis("Vertical") + _PlayerNum;
+        x = Input.GetAxisRaw("Horizontal" + _PlayerNum);
+        z = Input.GetAxisRaw("Vertical" + _PlayerNum);
         if (x != 0 || z != 0)
         {
             ChangeState(StateType.Movement);
@@ -104,13 +104,16 @@ public class PlayerMovementStateMachine : MonoBehaviour
     private void MovementUpdate()
     {
         Debug.Log("Movement‚¾‚æ");
-        x = Input.GetAxis("Horizontal") + _PlayerNum;
-        z = Input.GetAxis("Vertical" ) + _PlayerNum;
-        transform.position += new Vector3(x, 0, z) * _speed * Time.deltaTime;
-        if (x == 0 && z == 0)
+
+        x = Input.GetAxisRaw("Horizontal" + _PlayerNum);
+        z = Input.GetAxisRaw("Vertical" + _PlayerNum);
+        transform.Translate(new Vector3(x, 0, z) * _speed * Time.deltaTime); //+= new Vector3(x, 0, z) * _speed * Time.deltaTime;
+       if (x == 0 && z == 0)
         {
             ChangeState(StateType.Idle);
         }
+        Debug.Log(z);
+        
     }
     private void MovementEnd()
     {
