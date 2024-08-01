@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using static PSEStateMachine;
 
 public class PSEDeadState : PSEState
@@ -9,26 +9,28 @@ public class PSEDeadState : PSEState
         PSEStateContext Context = context;
     }
     //----------------------------------------------------------------------------------------------
-    //ŠJn‚ÉŒÄ‚Ño‚³‚ê‚éŠÖ”
+    //é–‹å§‹æ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹é–¢æ•°
     public override void EnterState()
     {
-        Debug.Log("NoneStateŠJn");
+        Debug.Log("DeadStateé–‹å§‹");
+        //æ•—åŒ—ã€€ãƒ«ãƒ¼ãƒ—å†ç”Ÿ
+        Context.audioSource.clip = Context.seclips[4];
+        Context.audioSource.loop = true;
+        Context.audioSource.Play();
     }
     //----------------------------------------------------------------------------------------------
-    //State‚ğ”²‚¯‚é‚Æ‚«‚ÉŒÄ‚Ño‚³‚ê‚éŠÖ”
+    //Stateã‚’æŠœã‘ã‚‹ã¨ãã«å‘¼ã³å‡ºã•ã‚Œã‚‹é–¢æ•°
     public override void ExitState()
     {
-        Debug.Log("NoneStateI—¹");
+        Debug.Log("DeadStateçµ‚äº†");
     }
     //----------------------------------------------------------------------------------------------
-    // ŒÄ‚Ño‚³‚ê‚Ä‚¢‚éŠÔˆ—‚ğs‚¤ŠÖ”
+    // å‘¼ã³å‡ºã•ã‚Œã¦ã„ã‚‹é–“å‡¦ç†ã‚’è¡Œã†é–¢æ•°
     public override void UpdateState()
     {
-        Debug.Log("NoneState’†");
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            GetNextState();
-        }
+        Debug.Log("DeadStateä¸­");
+        GetNextState();
+
     }
     //----------------------------------------------------------------------------------------------
     //
@@ -37,19 +39,19 @@ public class PSEDeadState : PSEState
         return StateKey;
     }
     //----------------------------------------------------------------------------------------------
-    //“–‚½‚è”»’è(G‚ê‚½‚ç)
+    //å½“ãŸã‚Šåˆ¤å®š(è§¦ã‚ŒãŸã‚‰)
     public override void OnTriggerEnter(Collider other)
     {
 
     }
     //----------------------------------------------------------------------------------------------
-    //“–‚½‚è”»’è(G‚ê‚Ä‚éŠÔ)
+    //å½“ãŸã‚Šåˆ¤å®š(è§¦ã‚Œã¦ã‚‹é–“)
     public override void OnTriggerStay(Collider other)
     {
 
     }
     //----------------------------------------------------------------------------------------------
-    //“–‚½‚è”»’è(”²‚¯‚½‚ç)
+    //å½“ãŸã‚Šåˆ¤å®š(æŠœã‘ãŸã‚‰)
     public override void OnTriggerExit(Collider other)
     {
 

@@ -13,6 +13,7 @@ public class PSEJumpState : PSEState
     public override void EnterState()
     {
         Debug.Log("JumpState開始");
+        Context.audioSource.PlayOneShot(Context.seclips[3]); //ジャンプ
     }
     //----------------------------------------------------------------------------------------------
     //Stateを抜けるときに呼び出される関数
@@ -25,10 +26,7 @@ public class PSEJumpState : PSEState
     public override void UpdateState()
     {
         Debug.Log("JumpState中");
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-        }
+        GetNextState();
 
     }
     //----------------------------------------------------------------------------------------------
@@ -41,7 +39,12 @@ public class PSEJumpState : PSEState
     //当たり判定(触れたら)
     public override void OnTriggerEnter(Collider other)
     {
-
+        //アイテムを拾ったとき
+        {
+            Context.audioSource.Stop(); //歩く　ループ再生の停止
+            Context.audioSource.pitch = 1;
+            Context.audioSource.PlayOneShot(Context.seclips[1]); //接触
+        }
     }
     //----------------------------------------------------------------------------------------------
     //当たり判定(触れてる間)

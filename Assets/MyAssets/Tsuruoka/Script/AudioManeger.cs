@@ -112,8 +112,8 @@ public class AudioManeger : MonoBehaviour
         //最初に再生されるBGMの設定
         _bgmNumber = 0;
         //音量設定
-        _bgmVolume = 5;
-        _seVolume = 5;
+        _bgmVolume = 3;
+        _seVolume = 8;
 
         //BGM配列の設定
         InData(ref _bgmClips, _bgmFPath);
@@ -146,12 +146,21 @@ public class AudioManeger : MonoBehaviour
         _seVolumeText.text = _seVolume.ToString();
         _bgmTypeText.text = _bgmName[_bgmNumber];
 
-        //動作確認のための処理
-        //後で必ず消す
+        //UI表示
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetButtonDown("GamePad_Entrer"))
             {
-                OpenUI();
+                if (_audioSettingCanvas.enabled == false)
+                {
+                    OpenUI();
+                }
+            }
+            if(Input.GetButtonDown("GamePad_Back"))
+            {
+                if (_audioSettingCanvas.enabled == true)
+                {
+                    _audioSettingCanvas.enabled = false;
+                }
             }
         }
         //

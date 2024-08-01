@@ -29,6 +29,8 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
     {
         //エラーメッセージ表示
         NullMessage();
+        //SEの読み込み
+        InData(ref _Seclips, _fPath);
         //共有エリアに追加したものを引数に持たせる
         _context = new PSEStateContext(_as, _Seclips);
 
@@ -36,8 +38,7 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
 
         //音量設定
         UpdateVolume();
-        //SEの読み込み
-        InData(ref _Seclips, _fPath);
+        
     }
     //----------------------------------------------------------------------------------------------
     private void NullMessage()
@@ -53,7 +54,6 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
         States.Add(PSEStates.Movement, new PSEMovementState(_context, PSEStates.Movement));
         States.Add(PSEStates.Jump, new PSEJumpState(_context, PSEStates.Jump));
         States.Add(PSEStates.Dead, new PSEDeadState(_context, PSEStates.Dead));
-
         //最初に呼び出すState
         CurrentState = States[PSEStates.Idel];
     }

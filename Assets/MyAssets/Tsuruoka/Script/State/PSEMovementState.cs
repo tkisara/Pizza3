@@ -12,23 +12,33 @@ public class PSEMovementState : PSEState
     //開始時に呼び出される関数
     public override void EnterState()
     {
-        Debug.Log("WalkState開始");
+        Debug.Log("MovementState開始");
+
+        //歩く　ループ再生
+        Context.audioSource.clip = Context.seclips[5]; //SE指定
+        Context.audioSource.pitch = 0.8f; //再生速度
+        Context.audioSource.loop = true; //ループ再生有無
+        Context.audioSource.Play(); //再生
     }
     //----------------------------------------------------------------------------------------------
     //Stateを抜けるときに呼び出される関数
     public override void ExitState()
     {
-        Debug.Log("WalkState終了");
+        Debug.Log("MovementState終了");
     }
     //----------------------------------------------------------------------------------------------
     // 呼び出されている間処理を行う関数
     public override void UpdateState()
     {
-        Debug.Log("WalkState中");
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        Debug.Log("MovementState中");
 
+        if(!Context.audioSource.isPlaying)
+        {//音が再生されていない場合
+            Context.audioSource.pitch = 0.8f;
+            Context.audioSource.Play();
         }
+
+        GetNextState();
 
     }
     //----------------------------------------------------------------------------------------------
@@ -41,7 +51,18 @@ public class PSEMovementState : PSEState
     //当たり判定(触れたら)
     public override void OnTriggerEnter(Collider other)
     {
-
+        //他のプレイヤとぶつかったとき
+        {
+            Context.audioSource.Stop(); //歩く　ループ再生の停止
+            Context.audioSource.pitch = 1;
+            Context.audioSource.PlayOneShot(Context.seclips[2]); //接触
+        }
+        //アイテムを拾ったとき
+        {
+            Context.audioSource.Stop(); //歩く　ループ再生の停止
+            Context.audioSource.pitch = 1;
+            Context.audioSource.PlayOneShot(Context.seclips[1]); //接触
+        }
     }
     //----------------------------------------------------------------------------------------------
     //当たり判定(触れてる間)

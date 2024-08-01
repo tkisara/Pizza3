@@ -12,23 +12,20 @@ public class PSEIdelState : PSEState
     //開始時に呼び出される関数
     public override void EnterState()
     {
-        Debug.Log("OutState開始");
+        Debug.Log("IdelState開始");
     }
     //----------------------------------------------------------------------------------------------
     //Stateを抜けるときに呼び出される関数
     public override void ExitState()
     {
-        Debug.Log("OutState終了");
+        Debug.Log("IdelState終了");
     }
     //----------------------------------------------------------------------------------------------
     // 呼び出されている間処理を行う関数
     public override void UpdateState()
     {
-        Debug.Log("OutState中");
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-        }
+        Debug.Log("IdelState中");
+        GetNextState();
 
     }
     //----------------------------------------------------------------------------------------------
@@ -41,7 +38,12 @@ public class PSEIdelState : PSEState
     //当たり判定(触れたら)
     public override void OnTriggerEnter(Collider other)
     {
-
+        //アイテムを拾ったとき
+        {
+            Context.audioSource.Stop(); //歩く　ループ再生の停止
+            Context.audioSource.pitch = 1;
+            Context.audioSource.PlayOneShot(Context.seclips[1]); //接触
+        }
     }
     //----------------------------------------------------------------------------------------------
     //当たり判定(触れてる間)
