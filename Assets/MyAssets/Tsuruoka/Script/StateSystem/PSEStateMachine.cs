@@ -22,6 +22,8 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
     //
     [SerializeField] private AudioSource _as;
     [SerializeField] private AudioClip[] _Seclips; //SE音源配列
+    [SerializeField]private PlayerMovementStateMachine _pMovementStateMachine=MonoBehaviour.FindObjectOfType<PlayerMovementStateMachine>();
+
     //
 
     //----------------------------------------------------------------------------------------------
@@ -32,7 +34,7 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
         //SEの読み込み
         InData(ref _Seclips, _fPath);
         //共有エリアに追加したものを引数に持たせる
-        _context = new PSEStateContext(_as, _Seclips);
+        _context = new PSEStateContext(_as, _Seclips,_pMovementStateMachine);
 
         InitializeStates();
 

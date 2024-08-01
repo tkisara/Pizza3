@@ -33,6 +33,18 @@ public class PSEJumpState : PSEState
     //
     public override PSEStateMachine.PSEStates GetNextState()
     {
+        if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Idle)
+        {
+            return PSEStates.Idel;
+        }
+        if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Movement)
+        {
+            return PSEStates.Movement;
+        }
+        if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Dead)
+        {
+            return PSEStates.Dead;
+        }
         return StateKey;
     }
     //----------------------------------------------------------------------------------------------
