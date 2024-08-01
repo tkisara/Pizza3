@@ -6,13 +6,14 @@ public class PlayerMovementStateMachine : MonoBehaviour
     {
         Idle,
         Movement,
+        Jump,
         Dead
     }
     float x, z;
     public StateType _currentState;
     private StateType _nextState;
-    static float _speed=20f;
-    static float _impulse = 100f;
+    public float _speed=20f;
+    public float _impulse = 100f;
     [SerializeField] private int _PlayerNum;
 
     // Start is called before the first frame update
@@ -32,6 +33,9 @@ public class PlayerMovementStateMachine : MonoBehaviour
             case StateType.Movement:
                 MovementUpdate();
                 break;
+            case StateType.Jump:
+                JumpUpdate();
+                break;
             case StateType.Dead:
                 DeadUpdate();
                 break;
@@ -46,6 +50,9 @@ public class PlayerMovementStateMachine : MonoBehaviour
                 case StateType.Movement:
                     MovementEnd();
                     break;
+                case StateType.Jump:
+                    JumpEnd();
+                    break;
                 case StateType.Dead:
                     DeadEnd();
                     break;
@@ -59,6 +66,9 @@ public class PlayerMovementStateMachine : MonoBehaviour
                     break;
                 case StateType.Movement:
                     MovementStart();
+                    break;
+                case StateType.Jump:
+                    JumpStart();
                     break;
                 case StateType.Dead:
                     DeadStart();
@@ -82,9 +92,9 @@ public class PlayerMovementStateMachine : MonoBehaviour
     }
     private void IdleUpdate()
     {
-        Debug.Log("Idle‚¾‚æ");
-        x = Input.GetAxis("Horizontal") + _PlayerNum;
-        z = Input.GetAxis("Vertical") + _PlayerNum;
+        //@@Debug.Log("Idle‚¾‚æ");
+        x = Input.GetAxis("Horizontal"+_PlayerNum);
+        z = Input.GetAxis("Vertical" + _PlayerNum); 
         if (x != 0 || z != 0)
         {
             ChangeState(StateType.Movement);
@@ -103,9 +113,9 @@ public class PlayerMovementStateMachine : MonoBehaviour
     }
     private void MovementUpdate()
     {
-        Debug.Log("Movement‚¾‚æ");
-        x = Input.GetAxis("Horizontal") + _PlayerNum;
-        z = Input.GetAxis("Vertical" ) + _PlayerNum;
+        
+        x = Input.GetAxis("Horizontal" + _PlayerNum);
+        z = Input.GetAxis("Vertical" + _PlayerNum);
         transform.position += new Vector3(x, 0, z) * _speed * Time.deltaTime;
         if (x == 0 && z == 0)
         {
@@ -117,10 +127,24 @@ public class PlayerMovementStateMachine : MonoBehaviour
 
     }
     //----------------------------
+    //JumpState
+    private void JumpStart()
+    {
+
+    }
+    private void JumpUpdate()
+    {
+
+    }
+    private void JumpEnd()
+    {
+
+    }
+    //----------------------------
     //DeadState
     private void DeadStart()
     {
-
+        
     }
     private void DeadUpdate()
     {
