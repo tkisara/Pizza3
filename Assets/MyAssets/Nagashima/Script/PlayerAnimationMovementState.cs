@@ -4,36 +4,36 @@ using UnityEngine;
 using UnityEngine.Playables;
 using static PlayerAnimationStateMachine;
 
-public class PlayerAnimationIdleState : PlayerAnimationState
+public class PlayerAnimationMovementState : PlayerAnimationState
 {
-    public PlayerAnimationIdleState(PlayerAnimationStateContext context, PlayerAnimationStateMachine.PlayerAnimationStates estate) : base(context, estate)
+    public PlayerAnimationMovementState(PlayerAnimationStateContext context, PlayerAnimationStateMachine.PlayerAnimationStates estate) : base(context, estate)
     {
         PlayerAnimationStateContext Context = context;
     }
     public override void EnterState()
     {
-        Debug.Log("IdleState開始");
-        Context.animator.SetBool("Idle", true);
+        Debug.Log("MovementState開始");
+        Context.animator.SetBool("Walk", true);
     }
     public override void ExitState()
     {
-        Debug.Log("IdleState終了");
-        Context.animator.SetBool("Idle", false);
+        Debug.Log("MovementState終了");
+        Context.animator.SetBool("Walk", false);
     }
     public override void UpdateState()
     {
-        Debug.Log("IdleState中");
+        Debug.Log("MovementState中");
         if (Input.GetKeyDown(KeyCode.Space))
         {
-     
+
         }
         GetNextState();
     }
     public override PlayerAnimationStateMachine.PlayerAnimationStates GetNextState()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            return PlayerAnimationStates.Movement;
+            return PlayerAnimationStates.Idle;
         }
         return StateKey;
     }
