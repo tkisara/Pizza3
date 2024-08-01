@@ -152,6 +152,7 @@ public class AudioManeger : MonoBehaviour
             {
                 if (_audioSettingCanvas.enabled == false)
                 {
+                    _audioSourceSE.PlayOneShot(_seClips[0]);
                     OpenUI();
                 }
             }
@@ -159,6 +160,7 @@ public class AudioManeger : MonoBehaviour
             {
                 if (_audioSettingCanvas.enabled == true)
                 {
+                    _audioSourceSE.PlayOneShot(_seClips[0]);
                     _audioSettingCanvas.enabled = false;
                 }
             }
