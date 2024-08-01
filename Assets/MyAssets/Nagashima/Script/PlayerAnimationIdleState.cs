@@ -6,6 +6,7 @@ using static PlayerAnimationStateMachine;
 
 public class PlayerAnimationIdleState : PlayerAnimationState
 {
+    private PlayerMovementStateMachine pMovementStateMachine = MonoBehaviour.FindObjectOfType<PlayerMovementStateMachine>();
     public PlayerAnimationIdleState(PlayerAnimationStateContext context, PlayerAnimationStateMachine.PlayerAnimationStates estate) : base(context, estate)
     {
         PlayerAnimationStateContext Context = context;
@@ -25,13 +26,13 @@ public class PlayerAnimationIdleState : PlayerAnimationState
         Debug.Log("IdleState’†");
         if (Input.GetKeyDown(KeyCode.Space))
         {
-     
+            MonoBehaviour.Destroy();
         }
         GetNextState();
     }
     public override PlayerAnimationStateMachine.PlayerAnimationStates GetNextState()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if(pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Idle)
         {
             return PlayerAnimationStates.Movement;
         }
