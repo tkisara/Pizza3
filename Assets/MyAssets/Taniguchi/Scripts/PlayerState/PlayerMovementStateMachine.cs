@@ -9,7 +9,7 @@ public class PlayerMovementStateMachine : MonoBehaviour
         Dead
     }
     float x, z;
-    private StateType _currentState;
+    public StateType _currentState;
     private StateType _nextState;
     static float _speed=20f;
     static float _impulse = 100f;
