@@ -26,7 +26,7 @@ public class PlayerAnimationIdleState : PlayerAnimationState
         Debug.Log("IdleState’†");
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            MonoBehaviour.Destroy();
+            //MonoBehaviour.Destroy();
         }
         GetNextState();
     }
