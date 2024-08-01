@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: e7a8cf91fe7c16947aef20d1dc156e72,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -135,7 +136,7 @@ GameObject:
   - component: {fileID: 416266112}
   - component: {fileID: 416266111}
   m_Layer: 0
-  m_Name: Directional Light (1)
+  m_Name: 'Directional Light '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,14 +234,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416266110}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.65, y: 24.3, z: -0.01}
+  m_LocalRotation: {x: -0.09229599, y: -0.7010574, z: -0.09229599, w: 0.7010574}
+  m_LocalPosition: {x: 25, y: 5, z: 0}
   m_LocalScale: {x: 1.0265, y: 1.0265, z: 1.0265}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -15, y: -90, z: 0}
 --- !u!1001 &1527639286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -400,7 +401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751297572}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -19.43, y: 10.71, z: -0.57}
+  m_LocalPosition: {x: -20, y: 13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -479,25 +480,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea0b7b35477ad1428bbf8d2b20da0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _angleVelocity: {x: 0, y: 0, z: 0}
-  _num: 2
-  PlayerObj1: {fileID: 7017210093286171204, guid: 685edd8967d84934aa9a3ee9db19d6e8,
+  PlayerObj1: {fileID: 7017210093286171204, guid: 0d6098b942f38f0459521e91d145fce9,
     type: 3}
-  PlayerObj2: {fileID: 123217409706207070, guid: e20c2c9113f11c04eb42a9983471c75d,
+  PlayerObj2: {fileID: 123217409706207070, guid: d62e09ada76864542a542022a2229815,
     type: 3}
-  PlayerObj3: {fileID: 4879291820449985182, guid: 38101d547927bc2478b855cf73257234,
+  PlayerObj3: {fileID: 4879291820449985182, guid: 081a7bf8ad150574790cff42293a80dd,
     type: 3}
-  PlayerObj4: {fileID: 7006166074117688292, guid: 650f7ad67bd59cb418553c38096e6d4a,
+  PlayerObj4: {fileID: 7006166074117688292, guid: 56e9179aae1537e4abf08649333e5cb2,
     type: 3}
-  _PlayerObj1: {fileID: 7649913491883292926, guid: 685edd8967d84934aa9a3ee9db19d6e8,
-    type: 3}
-  _PlayerObj2: {fileID: 792089518107721188, guid: e20c2c9113f11c04eb42a9983471c75d,
-    type: 3}
-  _PlayerObj3: {fileID: 5259477191302031396, guid: 38101d547927bc2478b855cf73257234,
-    type: 3}
-  _PlayerObj4: {fileID: 7669971289156473182, guid: 650f7ad67bd59cb418553c38096e6d4a,
-    type: 3}
-  _speed: 10
 --- !u!4 &1796134694
 Transform:
   m_ObjectHideFlags: 0
@@ -506,7 +496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796134692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.86, y: 12, z: 0}
+  m_LocalPosition: {x: 18.86, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

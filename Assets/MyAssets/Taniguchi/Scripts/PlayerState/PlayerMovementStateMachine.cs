@@ -174,6 +174,7 @@ public class PlayerMovementStateMachine : MonoBehaviour
             Vector3 _impulseVec = (_col.position - transform.position).normalized * _impulse;
             _col.AddForce(_impulseVec, ForceMode.Impulse);
         }
+        
     }
 
 }

@@ -13,7 +13,8 @@ public class Item2_Info : Item_Information
     private void OnCollisionEnter(Collision other)
     {
         //触れたら何を起こすか
-        if (other.gameObject.tag == "Player")
+        string tag = other.gameObject.tag;
+        if (tag.Contains("Player"))
         {
             // （重要ポイント）ItemクラスのItemBaseメソッドを呼び出す。
             // エフェクト、効果音等はこれで発生します。
