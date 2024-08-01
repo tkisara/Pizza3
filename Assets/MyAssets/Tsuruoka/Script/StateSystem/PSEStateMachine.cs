@@ -22,6 +22,8 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
     //
     [SerializeField] private AudioSource _as;
     [SerializeField] private AudioClip[] _Seclips; //SE音源配列
+    [SerializeField]private PlayerMovementStateMachine _pMovementStateMachine=MonoBehaviour.FindObjectOfType<PlayerMovementStateMachine>();
+
     //
 
     //----------------------------------------------------------------------------------------------
@@ -32,7 +34,7 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
         //SEの読み込み
         InData(ref _Seclips, _fPath);
         //共有エリアに追加したものを引数に持たせる
-        _context = new PSEStateContext(_as, _Seclips);
+        _context = new PSEStateContext(_as, _Seclips,_pMovementStateMachine);
 
         InitializeStates();
 
@@ -52,7 +54,7 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
         //追加したState
         States.Add(PSEStates.Idel, new PSEIdelState(_context, PSEStates.Idel));
         States.Add(PSEStates.Movement, new PSEMovementState(_context, PSEStates.Movement));
-        States.Add(PSEStates.Jump, new PSEJumpState(_context, PSEStates.Jump));
+        //States.Add(PSEStates.Jump, new PSEJumpState(_context, PSEStates.Jump));
         States.Add(PSEStates.Dead, new PSEDeadState(_context, PSEStates.Dead));
         //最初に呼び出すState
         CurrentState = States[PSEStates.Idel];

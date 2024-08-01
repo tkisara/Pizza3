@@ -3,7 +3,6 @@ using static PSEStateMachine;
 
 public class PSEIdelState : PSEState
 {
-    private PlayerMovementStateMachine pMovementStateMachine = MonoBehaviour.FindObjectOfType<PlayerMovementStateMachine>();
     //----------------------------------------------------------------------------------------------
     public PSEIdelState(PSEStateContext context, PSEStateMachine.PSEStates estate) : base(context, estate)
     {
@@ -33,11 +32,11 @@ public class PSEIdelState : PSEState
     //
     public override PSEStateMachine.PSEStates GetNextState()
     {
-        if(pMovementStateMachine._currentState==PlayerMovementStateMachine.StateType.Movement)
+        if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Movement)
         {
             return PSEStates.Movement;
         }
-        if (pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Dead)
+        if (Context.pMovementStateMachine._currentState == PlayerMovementStateMachine.StateType.Dead)
         {
             return PSEStates.Dead;
         }
