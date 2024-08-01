@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class PlayerStateContext
+public class EnemyStateContext
 {
     private Rigidbody _rb;
     private Collider _col;
 
-    public PlayerStateContext(Rigidbody rb,Collider col)
+    public EnemyStateContext(Rigidbody rb, Collider col)
     {
         _rb = rb;
         _col = col;

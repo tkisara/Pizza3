@@ -1,19 +1,20 @@
 using UnityEngine;
 using UnityEngine.Assertions;
+using static EnemyStateMachine;
 
-public class PlayerStateMachine : StateManager<PlayerStateMachine.PlayerStates>
+public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyStates>
 {
     /// <summary>
     /// PlayerStateMachineで扱うStateの種類
     /// </summary>
-    public enum PlayerStates
+    public enum EnemyStates
     {
-        Idle,
+        Search,
         Movement,
         Dead
     }
 
-    private PlayerStateContext _context;
+    private EnemyStateContext _context;
 
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private Collider _col;
@@ -21,7 +22,7 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.PlayerStates>
     void Awake()
     {
         NullMessage();
-        _context = new PlayerStateContext(_rb,_col);
+        _context = new EnemyStateContext(_rb, _col);
         InitializeStates();
     }
 
@@ -32,10 +33,10 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.PlayerStates>
     // PlayerStateMachineで使うStateの初期化と最初に呼び出されるStateの指定
     private void InitializeStates()
     {
-        States.Add(PlayerStates.Idle, new PlayerIdleState(_context, PlayerStates.Idle));
-        States.Add(PlayerStates.Movement, new PlayerMovementState(_context, PlayerStates.Movement));
-        States.Add(PlayerStates.Dead, new PlayerDeadState(_context, PlayerStates.Dead));
+        States.Add(EnemyStates.Search, new EnemySearchState(_context, EnemyStates.Search));
+        States.Add(EnemyStates.Movement, new EnemyMovementState(_context, EnemyStates.Movement));
+        States.Add(EnemyStates.Dead, new EnemyDeadState(_context, EnemyStates.Dead));
         //IdleStateを最初に呼び出す
-        CurrentState = States[PlayerStates.Idle];
+        CurrentState = States[EnemyStates.Search];
     }
 }

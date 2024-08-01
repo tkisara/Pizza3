@@ -1,30 +1,32 @@
 using UnityEngine;
 
-public class PlayerMovementState : PlayerState
+public class EnemyDeadState : EnemyState
 {
-    public PlayerMovementState(PlayerStateContext context, PlayerStateMachine.PlayerStates estate) : base(context, estate)
+    public EnemyDeadState(EnemyStateContext context, EnemyStateMachine.EnemyStates estate) : base(context, estate)
     {
-        PlayerStateContext Context = context;
+        EnemyStateContext Context = context;
     }
+
+
     public override void EnterState()
     {
-        Debug.Log("MovementState開始");
+        Debug.Log("DeadState開始");
     }
 
     public override void ExitState()
     {
-        Debug.Log("MovementState終了");
+        Debug.Log("DeadState終了");
     }
 
     public override void UpdateState()
     {
-        Debug.Log("MovementState中");
+        Debug.Log("DeadState中");
     }
-    public override PlayerStateMachine.PlayerStates GetNextState()
+    public override EnemyStateMachine.EnemyStates GetNextState()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            return PlayerStateMachine.PlayerStates.Dead;
+            return EnemyStateMachine.EnemyStates.Search;
         }
         return StateKey;
     }
