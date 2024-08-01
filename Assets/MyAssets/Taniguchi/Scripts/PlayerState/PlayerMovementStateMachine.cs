@@ -13,6 +13,7 @@ public class PlayerMovementStateMachine : MonoBehaviour
     private StateType _nextState;
     static float _speed=20f;
     static float _impulse = 100f;
+    [SerializeField] private int _PlayerNum;
 
     // Start is called before the first frame update
     void Start()
@@ -81,7 +82,14 @@ public class PlayerMovementStateMachine : MonoBehaviour
     }
     private void IdleUpdate()
     {
-        ChangeState(StateType.Movement);
+        Debug.Log("Idle‚¾‚æ");
+        x = Input.GetAxis("Horizontal") + _PlayerNum;
+        z = Input.GetAxis("Vertical") + _PlayerNum;
+        if (x != 0 || z != 0)
+        {
+            ChangeState(StateType.Movement);
+        }
+        
     }
     private void IdleEnd()
     {
@@ -95,13 +103,14 @@ public class PlayerMovementStateMachine : MonoBehaviour
     }
     private void MovementUpdate()
     {
-        x = Input.GetAxis("Horizontal");
-        z = Input.GetAxis("Vertical");
+        Debug.Log("Movement‚¾‚æ");
+        x = Input.GetAxis("Horizontal") + _PlayerNum;
+        z = Input.GetAxis("Vertical" ) + _PlayerNum;
         transform.position += new Vector3(x, 0, z) * _speed * Time.deltaTime;
-        /*if (x == 0 && z == 0)
+        if (x == 0 && z == 0)
         {
             ChangeState(StateType.Idle);
-        }*/
+        }
     }
     private void MovementEnd()
     {
