@@ -54,7 +54,7 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
         //í«â¡ÇµÇΩState
         States.Add(PSEStates.Idel, new PSEIdelState(_context, PSEStates.Idel));
         States.Add(PSEStates.Movement, new PSEMovementState(_context, PSEStates.Movement));
-        //States.Add(PSEStates.Jump, new PSEJumpState(_context, PSEStates.Jump));
+        States.Add(PSEStates.Jump, new PSEJumpState(_context, PSEStates.Jump));
         States.Add(PSEStates.Dead, new PSEDeadState(_context, PSEStates.Dead));
         //ç≈èâÇ…åƒÇ—èoÇ∑State
         CurrentState = States[PSEStates.Idel];
