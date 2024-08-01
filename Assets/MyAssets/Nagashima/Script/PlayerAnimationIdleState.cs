@@ -35,6 +35,10 @@ public class PlayerAnimationIdleState : PlayerAnimationState
         {
             return PlayerAnimationStates.Movement;
         }
+        if (Context.pm._currentState == PlayerMovementStateMachine.StateType.Jump)
+        {
+            return PlayerAnimationStates.Jump;
+        }
         return StateKey;
     }
     public override void OnTriggerEnter(Collider other)

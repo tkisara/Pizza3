@@ -10,6 +10,7 @@ public class PlayerAnimationStateMachine : StateManager<PlayerAnimationStateMach
     {
         Idle,
         Movement,
+        Jump,
         Action,
         Dead
     }
@@ -34,7 +35,7 @@ public class PlayerAnimationStateMachine : StateManager<PlayerAnimationStateMach
     {
         States.Add(PlayerAnimationStates.Idle, new PlayerAnimationIdleState(_context, PlayerAnimationStates.Idle));
         States.Add(PlayerAnimationStates.Movement, new PlayerAnimationMovementState(_context, PlayerAnimationStates.Movement));
-        States.Add(PlayerAnimationStates.Dead, new PlayerAnimationJumpState(_context, PlayerAnimationStates.Dead));
+        States.Add(PlayerAnimationStates.Jump, new PlayerAnimationJumpState(_context, PlayerAnimationStates.Jump));
         //IdleState‚ðÅ‰‚ÉŒÄ‚Ño‚·
         CurrentState = States[PlayerAnimationStates.Idle];
     }
