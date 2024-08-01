@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Ending_Information : MonoBehaviour
 {
-    public static GameObject lastPlayer;  // ÅŒã‚ÌPlayerƒ^ƒO‚ğ‚ÂGameObject‚ğ•Û‘¶‚·‚é‚½‚ß‚ÌÃ“I•Ï”
+    public static int lastPlayerID;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +19,8 @@ public class Ending_Information : MonoBehaviour
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length == 1)
         {
-            lastPlayer = players[0];
-            Invoke(nameof(LoadScene), 3f);
+            lastPlayerID = players[0].GetInstanceID();
+        Invoke(nameof(LoadScene), 3f);
         }
     }
 
