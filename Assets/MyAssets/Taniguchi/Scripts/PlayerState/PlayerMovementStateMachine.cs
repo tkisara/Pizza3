@@ -166,7 +166,8 @@ public class PlayerMovementStateMachine : MonoBehaviour
     //“–‚½‚è”»’è
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Player")
+        string tag = col.gameObject.tag;
+        if (tag.Contains("Player"))
         {
             Debug.Log("“–‚½‚Á‚½");
             Rigidbody _col = col.gameObject.GetComponent<Rigidbody>();
