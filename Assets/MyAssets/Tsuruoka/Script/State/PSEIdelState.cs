@@ -47,6 +47,8 @@ public class PSEIdelState : PSEState
     public override void OnTriggerEnter(Collider other)
     {
         //アイテムを拾ったとき
+        string tag = other.tag;
+        if(tag.Contains("Item"))
         {
             Context.audioSource.Stop(); //歩く　ループ再生の停止
             Context.audioSource.pitch = 1;
