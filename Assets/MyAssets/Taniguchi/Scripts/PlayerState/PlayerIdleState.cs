@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerIdleState:PlayerState
 {
+    float x, z;
     public PlayerIdleState(PlayerStateContext context,PlayerStateMachine.PlayerStates estate):base(context, estate)
     {
         PlayerStateContext Context = context;
@@ -20,11 +21,13 @@ public class PlayerIdleState:PlayerState
     
     public override void UpdateState()
     {
-        Debug.Log("IdleState’†");
+        x = Input.GetAxis("Horizontal");
+        z = Input.GetAxis("Vertical");
+        //Debug.Log("IdleState’†");
     }
     public override PlayerStateMachine.PlayerStates GetNextState()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (x != 0 || z != 0)
         {
             return PlayerStateMachine.PlayerStates.Movement;
         }
