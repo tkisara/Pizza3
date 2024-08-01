@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerMovementState : PlayerState
 {
+    float x;
+    float z;
     public PlayerMovementState(PlayerStateContext context, PlayerStateMachine.PlayerStates estate) : base(context, estate)
     {
         PlayerStateContext Context = context;
@@ -19,16 +21,17 @@ public class PlayerMovementState : PlayerState
 
     public override void UpdateState()
     {
-        float x = Input.GetAxis("Horizontal0");
-        float z = Input.GetAxis("Vertical0");
+        x = Input.GetAxis("Horizontal");
+        z = Input.GetAxis("Vertical");
         Context.myTransform.position += new Vector3(x, 0, z) * Context.pspeed * Time.deltaTime;
         Debug.Log("MovementState’†");
     }
     public override PlayerStateMachine.PlayerStates GetNextState()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (x==0&&z==0)
         {
-            return PlayerStateMachine.PlayerStates.Dead;
+            Debug.Log("‰Ÿ‚³‚ê‚Ä‚È‚¢‚æ");
+            //return PlayerStateMachine.PlayerStates.Idle;
         }
         return StateKey;
     }

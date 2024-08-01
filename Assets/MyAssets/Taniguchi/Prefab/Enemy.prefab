@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4001061685424711014}
   - component: {fileID: 6363977872601479431}
   - component: {fileID: 447683595576516435}
-  - component: {fileID: 5330881444320904900}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Player
@@ -34,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5273967840448538397
 MeshFilter:
@@ -136,17 +135,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &5330881444320904900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5070582435940999483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e88dd1ca14e3c349a674fb1b5e5f364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rb: {fileID: 447683595576516435}
-  _col: {fileID: 6363977872601479431}
