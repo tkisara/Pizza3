@@ -166,13 +166,15 @@ public class PlayerMovementStateMachine : MonoBehaviour
     //“–‚½‚è”»’è
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Player")
+        string tag = col.gameObject.tag;
+        if (tag.Contains("Player"))
         {
             Debug.Log("“–‚½‚Á‚½");
             Rigidbody _col = col.gameObject.GetComponent<Rigidbody>();
             Vector3 _impulseVec = (_col.position - transform.position).normalized * _impulse;
             _col.AddForce(_impulseVec, ForceMode.Impulse);
         }
+        
     }
 
 }
