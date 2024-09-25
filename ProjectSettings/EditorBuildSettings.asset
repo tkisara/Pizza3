@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MainGame.unity
     guid: 80439667c7582394b9aa965619f7b1c1
+  - enabled: 1
+    path: Assets/MyAssets/Taniguchi/Scenes/EndhingScene.unity
+    guid: ed31a41e6396d2449b87765a32769538
   m_configObjects: {}
