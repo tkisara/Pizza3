@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 using static PSEStateMachine;
 
 public class SelectStateMachine : StateManager<SelectStateMachine.SelectStates>
@@ -18,11 +20,12 @@ public class SelectStateMachine : StateManager<SelectStateMachine.SelectStates>
     }
 
     private SelectStateContext _context;
+    private Dropdown _dropdown;
 
     //共有エリア　contextに入れる
     //
     private int _canvasNumber = 0; //セレクト画面番号
-    private int _playerNum = 1; //プレイ人数
+    [SerializeField] private int _playerNum = 1; //プレイ人数
     private int _playerModel = 0; //キャラクタモデル番号
     private int _bgmType = 0; //BGM番号
     private int _bgmVolume = 10; //BGM音量
@@ -62,10 +65,33 @@ public class SelectStateMachine : StateManager<SelectStateMachine.SelectStates>
         States.Add(SelectStates.BGMType, new SelectBGMTypeState(_context, SelectStates.BGMType));
         States.Add(SelectStates.Volume, new SelectVolumeState(_context, SelectStates.Volume));
         //最初に呼び出すState
-        CurrentState = States[SelectStates.None];
+        //CurrentState = States[SelectStates.None];
+        //最初に呼び出すState（仮作成）
+        CurrentState = States[SelectStates.PlayerNum];
     }
     //----------------------------------------------------------------------------------------------
     //追加メソッドはここに書く
+    //次のセレクト画面に移動する
+    public void NextSelect()
+    {
+        if (_canvasNumber >= _canvass.Count) return;
+        _canvasNumber++;
+    }
+
+    /// <summary>
+    /// SelectPlayerNumState
+    public void B1Plus()
+    {
+        if (_playerNum >= 4) return;
+        _playerNum++;
+    }
+    public void B1Minus()
+    {
+        if (_playerNum <= 1) return;
+        _playerNum--;
+    }
+    /// <summary>
+
     //----------------------------------------------------------------------------------------------
 
 }

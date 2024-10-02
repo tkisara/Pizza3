@@ -1,8 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static SelectStateMachine;
 
 public class SelectPlayerNumState : SelectState
 {
+    private GameObject _textObj;
+    private Text _text;
     //----------------------------------------------------------------------------------------------
     public SelectPlayerNumState(SelectStateContext context, SelectStateMachine.SelectStates estate) : base(context, estate)
     {
@@ -15,6 +19,8 @@ public class SelectPlayerNumState : SelectState
         Debug.Log("PlayerNumState開始");
         //セレクト画面を表示する
         Context.canvass[Context.canvasNumber].gameObject.SetActive(true);
+        _textObj = GameObject.Find("PlayerNumText");
+        _text = _textObj.GetComponent<Text>();
     }
     //----------------------------------------------------------------------------------------------
     //Stateを抜けるときに呼び出される関数
@@ -27,6 +33,7 @@ public class SelectPlayerNumState : SelectState
     public override void UpdateState()
     {
         Debug.Log("PlayerNumState中");
+        _text.text=Context.playerNum.ToString();
         GetNextState();
 
     }
