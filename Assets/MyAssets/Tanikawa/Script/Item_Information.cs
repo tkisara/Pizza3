@@ -9,8 +9,8 @@ public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
     [SerializeField] AudioClip _sound;
 
     //プレイヤーの変更値→攻撃力、スピード、身体増幅
-    public static float _addForce;
-    public static float _speed;
+    //public static float _addForce;
+    //public static float _speed;
     public static float _body;
 
     public float _time;
@@ -28,13 +28,13 @@ public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
         {
             case "Item0": //Item0の時
                 //プレイヤーの値を書き換える
-                _addForce *= 1.5f;
+                PlayerMovementStateMachine._impulse *= 1.5f;
                 Debug.Log("Item0"); 
                 break;  
 
             case "Item1":
                 //プレイヤーの値を書き換える
-                _speed += 0.5f;
+                PlayerMovementStateMachine._speed += 0.5f;
                 Debug.Log("Item1"); 
                 break; 
 
@@ -66,8 +66,8 @@ public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
         _time += Time.deltaTime;
 
         if (_time < 10) {
-            _addForce = 0;
-            _speed = 0;
+            PlayerMovementStateMachine._impulse = 30f;
+            PlayerMovementStateMachine._speed = 20.0f;
             _body = 0;
         }
     }
