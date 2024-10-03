@@ -69,7 +69,8 @@ public class PSEStateMachine : StateManager<PSEStateMachine.PSEStates>
     //âπó ÇÃçXêV
     public void UpdateVolume()
     {
-        float seVolume = AudioManeger._Instance._seVolume;
+        //float seVolume = AudioManeger._Instance._seVolume;
+        float seVolume = AudioDirector._Instance._seVolume;
         //float seVolume = 1;
         if (__volume != seVolume)
         {
