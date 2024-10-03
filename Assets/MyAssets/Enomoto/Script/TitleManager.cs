@@ -29,39 +29,15 @@ public class TitleManager : MonoBehaviour
             Flag = false; // To ensure FadeOutAndLoadScene is called only once
             StartCoroutine(FadeOutAndLoadScene());
         }
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("GamePad_Entrer"))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("GamePad_Start"))
         {
-            switch (nm)
-            {
-                case 0:
-                    _Vcam0.SetActive(false);
-                    _Text.SetActive(false);
+            
                     Flag = true;
-                    nm = 1;
-                    break;
-                case 1:
-                    _Vcam1.SetActive(false);
-                    nm = 1;
-                    break;
+                   
             }
         }
 
-        if (Input.GetKey(KeyCode.B) || Input.GetButtonDown("GamePad_Back"))
-        {
-            switch (nm)
-            {
-                case 1:
-                    _Vcam0.SetActive(true);
-                    nm = 0;
-                    break;
-                case 2:
-                    _Vcam1.SetActive(true);
-                    _Text.SetActive(true);
-                    nm = 1;
-                    break;
-            }
-        }
-    }
+       
 
     IEnumerator FadeOutAndLoadScene()
     {

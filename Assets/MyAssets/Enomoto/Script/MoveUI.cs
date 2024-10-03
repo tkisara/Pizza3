@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class MoveUI : MonoBehaviour
 {
@@ -10,11 +11,16 @@ public class MoveUI : MonoBehaviour
     void Start()
     {
         rect = GetComponent<RectTransform>();
+        this.transform.DOShakePosition(2f, 10f, 30, 1, false, false).SetLoops(-1, LoopType.Restart);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        rect.localPosition += new Vector3(10, 0, 0);
+
+
     }
+
+
 }
