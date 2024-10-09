@@ -12,8 +12,8 @@ public class PlayerMovementStateMachine : MonoBehaviour
     float x, z;
     public StateType _currentState;
     private StateType _nextState;
-    public float _speed=20f;
-    public float _impulse = 100f;
+    public static float _speed=20f;
+    public static float _impulse = 30f;
     [SerializeField] private int _PlayerNum;
 
     // Start is called before the first frame update
@@ -153,6 +153,7 @@ public class PlayerMovementStateMachine : MonoBehaviour
     private void DeadStart()
     {
         Destroy(this.gameObject);
+        Debug.Log("Ž€‚ñ‚¾");
     }
     private void DeadUpdate()
     {

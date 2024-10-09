@@ -11,17 +11,17 @@ public class PlayerAnimationIdleState : PlayerAnimationState
     }
     public override void EnterState()
     {
-        Debug.Log("IdleState開始");
+        //Debug.Log("IdleState開始");
         Context.animator.SetBool("Idle", true);
     }
     public override void ExitState()
     {
-        Debug.Log("IdleState終了");
+        //Debug.Log("IdleState終了");
         Context.animator.SetBool("Idle", false);
     }
     public override void UpdateState()
     {
-        Debug.Log("IdleState中");
+        //Debug.Log("IdleState中");
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //MonoBehaviour.Destroy();
