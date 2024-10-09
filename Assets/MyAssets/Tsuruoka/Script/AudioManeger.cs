@@ -5,6 +5,7 @@ using TMPro;
 using System.IO;
 using UnityEngine.EventSystems;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManeger : MonoBehaviour
 {
@@ -69,6 +70,8 @@ public class AudioManeger : MonoBehaviour
     private const string _bgmFPath = "Sound/BGM";
     //ファイルパス　SE
     private const string _seFPath = "Sound/SE/Mane";
+    //エンディングシーン名
+    private const string _endSceneName = "EndhingScene";
 
     //BGM入れる配列
     [SerializeField] private AudioClip[] _bgmClips;
@@ -110,7 +113,7 @@ public class AudioManeger : MonoBehaviour
         //サウンド設定UIを非表示にする
         _audioSettingCanvas.enabled = false;
         //最初に再生されるBGMの設定
-        _bgmNumber = 4;
+        _bgmNumber = 5;
         //音量設定
         _bgmVolume = 3;
         _seVolume = 8;
@@ -145,6 +148,13 @@ public class AudioManeger : MonoBehaviour
         _bgmVolumeText.text = _bgmVolume.ToString();
         _seVolumeText.text = _seVolume.ToString();
         _bgmTypeText.text = _bgmName[_bgmNumber];
+
+        //エンディングシーンになったらBGM変更
+        if(SceneManager.GetActiveScene().name==_endSceneName)
+        {
+            _bgmNumber = 1;
+            AudioUpdate(_bgmClips[_bgmNumber]);
+        }
 
         //UI表示
         {
