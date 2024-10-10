@@ -58,6 +58,6 @@ public class TitleManager : MonoBehaviour
         panelColor.a = 1.0f;
         fadePanel.color = panelColor;
 
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("SelectScene2");
     }
 }

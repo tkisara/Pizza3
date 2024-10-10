@@ -22,22 +22,22 @@ public class EdingManger : MonoBehaviour
     {
         switch (_tag)
         {
-            case "Player1":
+            case "Player1(Clone)":
                 Instantiate(PlayerObj1, this.transform.position, Quaternion.identity);
                 _winText.text = "Player1 Win";
                 Debug.Log("çÏÇ¡ÇΩ");
                 break;
-            case "Player2":
+            case "Player2(Clone)":
                 Instantiate(PlayerObj2, this.transform.position, Quaternion.identity);
                 _winText.text = "Player2 Win";
                 Debug.Log("çÏÇ¡ÇΩ");
                 break;
-            case "Player3":
+            case "Player3(Clone)":
                 Instantiate(PlayerObj3, this.transform.position, Quaternion.identity);
                 _winText.text = "Player3 Win";
                 Debug.Log("çÏÇ¡ÇΩ");
                 break;
-            case "Player4":
+            case "Player4(Clone)":
                 Instantiate(PlayerObj4, this.transform.position, Quaternion.identity);
                 _winText.text = "Player4 Win";
                 Debug.Log("çÏÇ¡ÇΩ");

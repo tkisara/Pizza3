@@ -21,8 +21,9 @@ public class Ending_Information : MonoBehaviour
         {
             lastPlayerID = players[0].name;
             PlayerPrefs.SetString("tag", lastPlayerID);
-        Invoke(nameof(LoadScene), 3f);
+        Invoke(nameof(LoadScene), 2f);
         }
+       Debug.Log(lastPlayerID);
     }
 
     void LoadScene()
