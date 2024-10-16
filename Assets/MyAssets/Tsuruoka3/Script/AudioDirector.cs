@@ -12,8 +12,8 @@ public class AudioDirector : MonoBehaviour
         {
             if (_instance == null)
             {
-                // _instance = FindObjectOfType<AudioDirector>();
-                if (_instance != null)
+                _instance = FindObjectOfType<AudioDirector>();
+                if (_instance == null)
                 {
                     GameObject _obj = new GameObject("AudioDirector");
                     _instance = _obj.AddComponent<AudioDirector>();
