@@ -802,7 +802,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd03488536d0854d9d90ab5bfb97eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultSpeed: 20
+  DefaultImpulse: 30
+  BufSpeed: 40
+  BufImpulse: 1000
+  BufDurationSpeed: 10
+  BufDurationImpulse: 10
   _currentState: 0
+  _speed: 0
+  _impulse: 0
   _PlayerNum: 2
 --- !u!54 &1406034713104698207
 Rigidbody:

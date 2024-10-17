@@ -22,19 +22,22 @@ public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
     // （ポイント）先頭に「public」をつけること。
     public void ItemBase(GameObject Player)
     {
+        var p = Player.GetComponent<PlayerMovementStateMachine>();
+        Debug.Log(p.ToString());
+
         //プレイヤーの値を継承出来たら
         //アイテムのtagを確認する
         switch (gameObject.tag)
         {
             case "Item0": //Item0の時
                 //プレイヤーの値を書き換える
-                PlayerMovementStateMachine._impulse *= 1.5f;
+                p.StartBufImpulse();
                 Debug.Log("Item0"); 
                 break;  
 
             case "Item1":
                 //プレイヤーの値を書き換える
-                PlayerMovementStateMachine._speed += 0.5f;
+                p.StartBufSpeed();
                 Debug.Log("Item1"); 
                 break; 
 
@@ -64,11 +67,5 @@ public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
     private void Update()
     {
         _time += Time.deltaTime;
-
-        if (_time < 10) {
-            PlayerMovementStateMachine._impulse = 30f;
-            PlayerMovementStateMachine._speed = 20.0f;
-            _body = 0;
-        }
     }
 }
