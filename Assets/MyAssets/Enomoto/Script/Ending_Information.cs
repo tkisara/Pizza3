@@ -23,7 +23,7 @@ public class Ending_Information : MonoBehaviour
             PlayerPrefs.SetString("tag", lastPlayerID);
         Invoke(nameof(LoadScene), 2f);
         }
-       Debug.Log(lastPlayerID);
+       
     }
 
     void LoadScene()
