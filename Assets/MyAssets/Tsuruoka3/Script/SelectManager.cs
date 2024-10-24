@@ -19,9 +19,13 @@ public class SelectManager : MonoBehaviour
 
     private SelectState state;
     [SerializeField] private List<Canvas> canvass; //セレクト画面リスト
-    [SerializeField] private List<Dropdown> dropdowns; //プルダウンコンポーネント
+    //[SerializeField] private List<Dropdown> dropdowns; //プルダウンコンポーネント
     [SerializeField] private List<AudioClip> audioClips; //BGMリスト
     private int bgmTypeNumber; //BGM番号
+    [SerializeField] private Text numText;
+    [SerializeField] private Text bgmTypeText;
+    [SerializeField] private Text bgmVolumeText;
+    [SerializeField] private Text seVolumeText;
 
     [SerializeField] private List<GameObject> buttons;
     private EventSystem eventSystem;
@@ -79,8 +83,9 @@ void Start()
 
         bgmTypeNumber = 0;
         userSetting.audioClip = audioClips[bgmTypeNumber];
-        userSetting.bgmVolume = 3 * 2;
-        userSetting.seVolume = 2 * 2;
+        userSetting.PlayerNum = 1;
+        userSetting.bgmVolume = 6;
+        userSetting.seVolume = 4;
 
     }
 
@@ -92,19 +97,26 @@ void Start()
             case SelectState.Ready: //準備
                 canvass[0].gameObject.SetActive(true);
                 eventSystem.SetSelectedGameObject(buttons[0]); //初期選択
+                //eventSystem.firstSelectedGameObject = buttons[0];
                 break;
             case SelectState.PlayerNum: //プレイ人数選択画面
                 canvass[1].gameObject.SetActive(true);
                 eventSystem.SetSelectedGameObject(buttons[1]); //初期選択
-                userSetting.PlayerNum = dropdowns[0].value + 1;
+                //eventSystem.firstSelectedGameObject = buttons[1];
+                //userSetting.PlayerNum = dropdowns[0].value + 1;
+                numText.text = userSetting.PlayerNum.ToString();
                 break;
             case SelectState.Audio: //オーディオ設定
                 canvass[2].gameObject.SetActive(true);
                 eventSystem.SetSelectedGameObject(buttons[2]); //初期選択
-                bgmTypeNumber = dropdowns[1].value;
+                //eventSystem.firstSelectedGameObject = buttons[2];
+                //bgmTypeNumber = dropdowns[1].value;
                 userSetting.audioClip = audioClips[bgmTypeNumber];
-                userSetting.bgmVolume = dropdowns[2].value * 2;
-                userSetting.seVolume = dropdowns[3].value * 2;
+                //userSetting.bgmVolume = dropdowns[2].value * 2;
+                //userSetting.seVolume = dropdowns[3].value * 2;
+                bgmTypeText.text = audioClips[bgmTypeNumber].ToString();
+                bgmVolumeText.text = userSetting.bgmVolume.ToString();
+                seVolumeText.text = userSetting.seVolume.ToString();
 
                 //各設定の引継ぎ
                 AudioDirector._Instance._bgmAudioClip = userSetting.audioClip;
@@ -135,8 +147,8 @@ void Start()
         else if (state == SelectState.PlayerNum)
         {
             canvass[1].gameObject.SetActive(false); //非表示
-            dropdowns[2].value = 3;
-            dropdowns[3].value = 2;
+            //dropdowns[2].value = 3;
+            //dropdowns[3].value = 2;
             state = SelectState.Audio; //次のセレクト画面に移動
         }
         else if (state == SelectState.Audio)
@@ -150,4 +162,67 @@ void Start()
         }
     }
 
+    public void PlusButton()
+    {
+        if (state == SelectState.PlayerNum)
+        {
+            if (userSetting.PlayerNum < 4)
+            {
+                userSetting.PlayerNum++;
+            }
+        }
+        else if (state == SelectState.Audio)
+        {
+            if (bgmTypeNumber < 5)
+            {
+                bgmTypeNumber++;
+            }
+        }
+    }
+    public void PlusButton2()
+    {
+        if (userSetting.bgmVolume < 10)
+        {
+            userSetting.bgmVolume++;
+        }
+    }
+    public void PlusButton3()
+    {
+        if (userSetting.seVolume < 10)
+        {
+            userSetting.seVolume++;
+        }
+    }
+
+    public void MinusButton()
+    {
+        if (state == SelectState.PlayerNum)
+        {
+            if (userSetting.PlayerNum > 1)
+            {
+                userSetting.PlayerNum--;
+            }
+        }
+        else if (state == SelectState.Audio)
+        {
+            if (bgmTypeNumber > 0)
+            {
+                bgmTypeNumber--;
+            }
+        }
+    }
+    public void MinusButton2()
+    {
+        if (userSetting.bgmVolume > 0)
+        {
+            userSetting.bgmVolume--;
+        }
+    }
+    public void MinusButton3()
+    {
+        if (userSetting.seVolume > 0)
+        {
+            userSetting.seVolume--;
+        }
+    }
 }
