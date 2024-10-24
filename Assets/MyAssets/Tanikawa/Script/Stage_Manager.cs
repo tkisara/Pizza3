@@ -49,7 +49,7 @@ public class Stage_Manager : MonoBehaviour
         if (_pizzaPrefabs[i] == null) return;
         {
             _pizzaPrefabs[i].transform.DOShakePosition(
-                1f,0.5f,2,0,false,true).SetLink(_pizzaPrefabs[i]);
+                1f,1f,2,10,false,true).SetLink(_pizzaPrefabs[i]);
         }
     }
     //ŠÔŒo‰ß‚µ‚½‚çstage1‚ğy²•ûŒü‚É—‚Æ‚·ŠÖ”‚ğì‚é
