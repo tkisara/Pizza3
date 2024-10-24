@@ -11,6 +11,9 @@ public class TriggerEffect : MonoBehaviour
    [SerializeField]
    [Tooltip("発生させるエフェクト(パーティクル)")]
    private ParticleSystem effectEx;
+   [SerializeField]
+   [Tooltip("発生させるSE")]
+   private AudioSource newaudio;
 
     // トリガーに入ったときに呼ばれるメソッド
     /// <summary>
@@ -26,6 +29,7 @@ public class TriggerEffect : MonoBehaviour
 
             effectBoom.Play();
             effectEx.Play();
+            newaudio.Play();
 
             /*// パーティクルシステムのインスタンスを生成する。
             ParticleSystem newParticle0 = Instantiate(effectBoom);
