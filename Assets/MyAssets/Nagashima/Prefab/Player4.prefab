@@ -1032,14 +1032,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSpeed: 20
   DefaultImpulse: 30
-  BufSpeed: 40
-  BufImpulse: 1000
-  BufDurationSpeed: 10
-  BufDurationImpulse: 10
+  BufSpeed: 60
+  BufImpulse: 90
+  BufDurationSpeed: 3
+  BufDurationImpulse: 5
   _currentState: 0
+  _PlayerNum: 3
   _speed: 0
   _impulse: 0
-  _PlayerNum: 3
 --- !u!136 &7044582637295715596
 CapsuleCollider:
   m_ObjectHideFlags: 0

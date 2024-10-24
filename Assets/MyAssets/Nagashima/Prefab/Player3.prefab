@@ -807,14 +807,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultSpeed: 20
   DefaultImpulse: 30
-  BufSpeed: 40
-  BufImpulse: 1000
-  BufDurationSpeed: 10
-  BufDurationImpulse: 10
+  BufSpeed: 60
+  BufImpulse: 90
+  BufDurationSpeed: 3
+  BufDurationImpulse: 5
   _currentState: 0
+  _PlayerNum: 2
   _speed: 0
   _impulse: 0
-  _PlayerNum: 2
 --- !u!54 &1406034713104698207
 Rigidbody:
   m_ObjectHideFlags: 0
