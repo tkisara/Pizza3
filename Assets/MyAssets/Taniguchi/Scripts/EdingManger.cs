@@ -51,7 +51,7 @@ public class EdingManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)|| Input.GetButtonDown("GamePad_Entrer"))
+        if (Input.GetKeyDown(KeyCode.Space)|| Input.GetButtonDown("GamePad_Start"))
         {
             SceneManager.LoadScene("Titel");
         }
