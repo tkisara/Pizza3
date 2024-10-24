@@ -9,16 +9,30 @@ public class PlayerMovementStateMachine : MonoBehaviour
         Jump,
         Dead
     }
+    public float DefaultSpeed = 20f;
+    public float DefaultImpulse = 30f;
+    public float BufSpeed = 25f;
+    public float BufImpulse = 40f;
+    public float BufDurationSpeed = 10;
+    public float BufDurationImpulse = 10;
+
     float x, z;
     public StateType _currentState;
     private StateType _nextState;
-    public static float _speed=20f;
-    public static float _impulse = 30f;
+    public float _speed;
+    public float _impulse;
     [SerializeField] private int _PlayerNum;
+
+    bool _isItemImpulse = false;
+    bool _isItemSpeed = false;
+    float _itemTimerImpulse = 0;
+    float _itemTimerSpeed = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        _speed = DefaultSpeed;
+        _impulse = DefaultImpulse;
         IdleStart();
     }
 
@@ -75,7 +89,32 @@ public class PlayerMovementStateMachine : MonoBehaviour
                     break;
             }
         }
+
+        UpdateBuf();
     }
+
+    void UpdateBuf()
+    {
+        if (_isItemSpeed)
+        {
+            _itemTimerSpeed += Time.deltaTime;
+            if(_itemTimerSpeed >= BufDurationSpeed)
+            {
+                _isItemSpeed = false;
+                _speed = DefaultSpeed;
+            }
+        }
+        if (_isItemImpulse)
+        {
+            _itemTimerImpulse += Time.deltaTime;
+            if (_itemTimerImpulse >= BufDurationImpulse)
+            {
+                _isItemImpulse = false;
+                _impulse = DefaultImpulse;
+            }
+        }
+    }
+
     /// <summary>
     /// ステート遷移
     /// </summary>
@@ -178,4 +217,19 @@ public class PlayerMovementStateMachine : MonoBehaviour
         
     }
 
+    public void StartBufImpulse()
+    {
+        _impulse = BufImpulse;
+        _itemTimerImpulse = 0;
+        _isItemImpulse = true;
+        Debug.Log("_impulse:" + _impulse);
+    }
+
+    public void StartBufSpeed()
+    {
+        _speed = BufSpeed;
+        _itemTimerSpeed = 0;
+        _isItemSpeed = true;
+        Debug.Log("_speed:" + _speed);
+    }
 }
