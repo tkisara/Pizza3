@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _Vcam0;
     [SerializeField] private GameObject _Text;
-    [SerializeField] private GameObject _Vcam1;
     //int nm = 0;
     bool Flag = false;
     public Image fadePanel;             // フェード用のUIパネル（Image）
