@@ -19,10 +19,13 @@ public class PlayerMovementStateMachine : MonoBehaviour
     float x, z;
     public StateType _currentState;
     private StateType _nextState;
-    public float _speed;
-    public float _impulse;
+    
     [SerializeField] private int _PlayerNum;
 
+    private  Rigidbody _rb;
+
+    public float _speed;
+    public float _impulse;
     bool _isItemImpulse = false;
     bool _isItemSpeed = false;
     float _itemTimerImpulse = 0;
@@ -31,6 +34,7 @@ public class PlayerMovementStateMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _rb=GetComponent<Rigidbody>();
         _speed = DefaultSpeed;
         _impulse = DefaultImpulse;
         IdleStart();
@@ -159,7 +163,9 @@ public class PlayerMovementStateMachine : MonoBehaviour
         
         x = Input.GetAxis("Horizontal" + _PlayerNum);
         z = Input.GetAxis("Vertical" + _PlayerNum);
-        transform.position += new Vector3(x, 0, z) * _speed * Time.deltaTime;
+        //transform.position += new Vector3(x, 0, z) * _speed * Time.deltaTime;
+        Vector3 _movement = new Vector3(x, 0, z);
+        _rb.MovePosition(transform.position + _movement * _speed * Time.deltaTime);
         if (x == 0 && z == 0)
         {
             ChangeState(StateType.Idle);

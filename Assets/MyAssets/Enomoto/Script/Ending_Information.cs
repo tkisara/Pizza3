@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Ending_Information : MonoBehaviour
 {
     public static string lastPlayerID;
+    bool isLoaded = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,13 +17,16 @@ public class Ending_Information : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isLoaded) return;
+
         // Playerタグを持つGameObjectが一つだけ残った場合、そのGameObjectを静的変数に保存
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length == 1)
         {
             lastPlayerID = players[0].name;
             PlayerPrefs.SetString("tag", lastPlayerID);
-        Invoke(nameof(LoadScene), 2f);
+            Invoke(nameof(LoadScene), 2f);
+            isLoaded = true;
         }
        
     }
