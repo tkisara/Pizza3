@@ -55,5 +55,10 @@ public class EdingManger : MonoBehaviour
         {
             SceneManager.LoadScene("Titel");
         }
+
+        if (Input.GetButtonDown("GamePad_Entrer"))
+        {
+            SceneManager.LoadScene("MainGame");
+        }
     }
 }
