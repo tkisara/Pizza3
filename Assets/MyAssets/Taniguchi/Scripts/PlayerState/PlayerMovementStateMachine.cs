@@ -34,6 +34,7 @@ public class PlayerMovementStateMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         _rb=GetComponent<Rigidbody>();
         _speed = DefaultSpeed;
         _impulse = DefaultImpulse;
@@ -237,5 +238,14 @@ public class PlayerMovementStateMachine : MonoBehaviour
         _itemTimerSpeed = 0;
         _isItemSpeed = true;
         Debug.Log("_speed:" + _speed);
+    }
+    public void StartBufDouble()
+    {
+        _speed = BufSpeed;
+        _itemTimerSpeed = 0;
+        _isItemSpeed = true;
+        _impulse = BufImpulse;
+        _itemTimerImpulse = 0;
+        _isItemImpulse = true;
     }
 }
