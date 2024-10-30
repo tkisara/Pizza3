@@ -56,7 +56,7 @@ public class AudioDirector : MonoBehaviour
         else if (_instance != null)
         {
             //Debug.Log("AudioDirector instance already exists, destroying this instance.");
-            //Destroy(gameObject);
+            Destroy(gameObject);
             //return;
         }
 
