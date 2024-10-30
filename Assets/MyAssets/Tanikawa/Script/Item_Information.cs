@@ -11,7 +11,7 @@ public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
     //プレイヤーの変更値→攻撃力、スピード、身体増幅
     //public static float _addForce;
     //public static float _speed;
-    public static float _body;
+    //public static float _body;
 
     public float _time;
 
@@ -43,7 +43,7 @@ public class Item_Information : MonoBehaviour //プレイヤーの値を継承したい
 
             case "Item2":
                 //プレイヤーの値を書き換える
-                _body *= 1.5f;
+                p.StartBufDouble();
                 Debug.Log("Item2"); 
                 break; 
 
